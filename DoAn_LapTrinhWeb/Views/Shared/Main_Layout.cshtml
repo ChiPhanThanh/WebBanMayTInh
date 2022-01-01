@@ -1,0 +1,135 @@
+﻿@*Layout chính của web*@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>@ViewBag.Title</title>
+    <!-- thumbnail on sharing -->
+    <link href="~/Content/my_css/jquery.fancybox.min.css" rel="stylesheet" />
+    <meta property="og:image" content="~/Content/Images/thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- site icons -->
+    <link rel="icon" href="~/Images/fevicon/favicon.png" type="image/png" />
+    <!--zoom ảnh bằng fancybox-->
+    <link href="~/Content/my_css/fancybox.css" rel="stylesheet" />
+    <!--zoom image-->
+    <link href="~/Content/my_css/hizoom.css" rel="stylesheet" />
+    <!-- Meterial icons font -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/my_css/responsive.css" rel="stylesheet" />
+    <link href="~/Scripts/toastr/jquery.toast.css" rel="stylesheet" />
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- Site css -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/customcss")
+    @Styles.Render("~/bundles/revolution")
+    @Styles.Render("~/bundles/rollbacktopcss")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- add font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font family roboto -->
+
+</head>
+<body>
+    <!-- loader -->
+    <!-- end loader -->
+    <!-- start header -->
+    <header id="default_header" class="header_style_1 fw-normal small-screen">
+        @Html.Partial("Header_Layout")
+    </header>
+    <!-- end header -->
+    <button onclick="topFunction()" id="myBtn"><i class="fa fa-angle-up" id="fadeshow2" aria-hidden="true"></i></button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+
+    <!-- end back to top-->
+    @RenderBody()  @*Nội dung bạn gắn vào sẽ hiển thị từ đây trở xuống*@
+    <!-- start view đăng nhập đăng ký,quên mật khẩu-->
+    @Html.Partial("SignIn_Res_Forgot_Module")
+    <!-- end view đăng nhập đăng ký,quên mật khẩu-->
+    <!-- footer -->
+    <footer class="footer_style_2 ">
+        @Html.Partial("Footer_Layout")
+    </footer>
+    <!-- end footer -->
+    <!-- start facebook chat plugin -->
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "109633994706435");
+        chatbox.setAttribute("attribution", "biz_inbox");
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v11.0'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- end facebook chat plugin -->
+    <script src="~/Scripts/my_js/login.js"></script>
+    <!-- end facebook chat plugin -->
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/my_js/checkuseraccount.js"></script>
+    <script src="~/Scripts/my_js/search.js"></script>
+    <script src="~/Scripts/my_js/account_js/login.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/toastr/jquery.toast.js"></script>
+    <script src="~/Scripts/my_js/cookie.js"></script>
+    <script src="~/Scripts/my_js/common.js"></script>
+    <!--script zoom ảnh-->
+    <script src="~/Scripts/my_js/jquery.fancybox.min.js"></script>
+    @Scripts.Render("~/bundles/rollbacktop")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/customjs")
+    @Scripts.Render("~/bundles/jsaccount")
+    @Scripts.Render("~/bundles/zoomimagejs")
+    @Scripts.Render("~/bundles/slidebanner")
+    @Html.Partial("OrderMesg")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

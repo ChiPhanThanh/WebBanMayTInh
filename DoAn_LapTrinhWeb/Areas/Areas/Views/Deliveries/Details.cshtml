@@ -1,0 +1,59 @@
+﻿@model DoAn_LapTrinhWeb.Model.Delivery
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Delivery</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.delivery_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.delivery_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.delivery_id}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

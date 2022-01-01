@@ -1,0 +1,331 @@
+﻿@using DoAn_LapTrinhWeb.Models
+@model Product
+@using DoAn_LapTrinhWeb.Common
+@{
+    ViewBag.Title = Model.product_name;
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+    string defaultImg = "/Content/Images/no-image.jpg";
+    var relatedproduct = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.relatedproduct;
+}
+<!-- loader -->
+<!-- end loader -->
+<div class="it_shop_detail">
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                    <li class="active">Chi tiết sản phẩm</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+    <!-- section -->
+    <div class="section padding_layout_1 product_detail mt-20px">
+        <link href="~/Content/my_css/fancybox.css" rel="stylesheet" />
+        <script src="~/Scripts/my_js/fancybox.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 col-md-12 ">
+                            <div class="product_detail_feature_img hizoom hi2">
+                                <div class="hizoom ">
+                                    <!--zoom image dùng thư viện fancybox đã add vào Main_Layout-->
+                                    <a href="@Model.image" data-fancybox="images" data-width="1000" data-height="1000"><img class="w-100 h-100" src="@(Model.image != null? Model.image : defaultImg)" alt="@Model.product_name" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-md-12 ps-3 pe-3">
+                            <div class="product-heading">
+                                @if (Model.type == 1)
+                                {
+                                    <p class="h5">
+
+                                        Laptop @Model.product_name
+                                    </p>
+                                }
+                                else
+                                {
+
+                                    <p class="h5">
+                                        @Model.product_name
+                                    </p>
+                                }
+
+                            </div>
+                            <div class="product-detail-side">
+                                @if (Model.Discount != null)
+                                {
+                                    if (Model.Discount.discount_star < DateTime.Now && Model.Discount.discount_end > DateTime.Now)
+                                    {
+                                        <span><del>@Model.price.ToString("#,###₫")</del></span>
+                                        <span class="new_price">@((Model.price - Model.Discount.discount_price).ToString("#,0₫"))</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="new_price">@Model.price.ToString("#,###₫")</span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="new_price">@Model.price.ToString("#,###₫")</span>
+                                }
+                                <br />
+                                <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </span> <span class="review">(5 Đánh giá sản phẩm)</span>
+                            </div>
+                            <div class="detail-contant mt-3">
+                                <div>
+                                    @Model.specifications
+                                </div>
+                                <p class="mt-2">                                  
+                                    <span class="stock ">
+                                        <strong class="fw-bold">Tình trạng</strong>:
+                                        @{
+                                            string tinhtrang;
+                                            if (Model.quantity == "2" || Model.quantity == "3" || Model.quantity == "4" || Model.quantity == "5" || Model.quantity == "6" || Model.quantity == "7" || Model.quantity == "8" || Model.quantity == "9" || Model.quantity == "10")
+                                            {
+                                                tinhtrang = "Còn ít";
+                                            }
+                                            else if (Model.quantity == "1")
+                                            {
+                                                tinhtrang = "Còn lại 1 sản phẩm";
+                                            }
+                                            else if (Model.quantity == "0")
+                                            {
+                                                tinhtrang = "Hết hàng";
+                                            }
+                                            else
+                                            {
+                                                tinhtrang = "Còn hàng";
+                                            }
+                                        }@tinhtrang
+                                    </span>
+                                </p>
+                                <form class="cart mt-2" method="post" action="#">
+
+                                    @if (Model.quantity != "0")
+                                    {
+
+                                        if (User.IsInRole(Const.ROLE_ADMIN_NAME)) //nếu bạn là admin thì sẽ không thêm được số lượng
+                                        {
+                                            <div class="quantity">
+                                                <input step="0" min="0" max="@Model.quantity" name="quantity" value="0" title="Số lượng" class="input-text qty text" size="4" type="number">
+                                            </div>
+                                            <button class="btn bg-danger w-200 ps-3 pe-3 sqaure_bt">Chức năng chỉ dùng cho User</button>
+                                        }
+                                        else
+                                        {
+                                            <div class="quantity">
+                                                <input step="1" min="1" max="@Model.quantity" name="quantity" value="1" title="số lượng" class="input-text qty text" size="4" type="number">
+                                            </div>
+                                            <button type="button" id="btnAddToCart" data-id="@Model.product_id" class="btn w-180px sqaure_bt">Thêm vào giỏ hàng</button> //nếu bạn là user sẽ thêm được số lượng
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="quantity">
+                                            <input min="0" max="0" name="quantity" value="0" title="số lượng" class="input-text qty text" size="4" type="number">
+                                        </div>
+                                        <a class="ms-2 btn w-180px sqaure_bt" target="_blank" href="https://www.messenger.com/t/109633994706435/">Liên hệ</a>
+                                    }
+                                </form>
+
+
+                            </div>
+                            <div class="share-post mt-3">
+                                <a href="#" class="share-text">Chia sẻ</a>
+                                <ul class="social_icons">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                <div class="tab_bar_section">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#description">Mô tả sản phẩm</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews">Nhận xét (1)</a> </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div id="description" class="tab-pane active">
+                                            <div class="product_desc">
+                                                @Model.description
+                                            </div>
+                                        </div>
+                                        <div id="reviews" class="tab-pane fade">
+                                            <div class="product_review">
+                                                <h3>Nhận xét (1)</h3>
+                                                <div class="commant-text row">
+                                                    <div class="col-lg-2 col-md-2 col-sm-4">
+                                                        <div class="profile"> <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROtRexjLK8flJ1PQ06XeJz99L_AVrKmDnC4eDByD67UJk_XJ7KIGh5XrGra6iS-Siovpk&usqp=CAU" alt="#"> </div>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10 col-sm-8">
+                                                        <h5>Bùi Xuân Huấn</h5>
+                                                        <p><span class="c_date">28/07/2021</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
+                                                        <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p class="msg">
+                                                            Qua đây em chỉ muốn nói với anh một câu này thôi. Em có sai với ai đi nữa, có làm cái gì đi nữa. Nếu có phải trả giá thì em cũng xin chấp nhận. Bởi vì anh biết đấy. Ra xã hội làm ăn bươn trải. Liều thì ăn nhiều không liều thì ăn ít. Muốn thành công phải chấp nhận chịu qua đắng cay ngọt bùi.
+                                                            Làm ăn muốn kiếm được tiền phải chấp nhận mạo hiểm, nguy hiểm một tí, nhưng trong tầm kiểm soát(anh hiểu chưa). Xã hội lày chịu khó cần cù thì bù siêng năng chỉ có làm thì mới có ăn...
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="full review_bt_section">
+                                                            <a class="btn sqaure_bt w-180px float-right" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">Thêm nhận xét</a>
+                                                        </div>
+                                                        <div class="full">
+                                                            <div id="collapseExample" class="full collapse commant_box">
+                                                                <form accept-charset="UTF-8" action="index.html" method="post">
+                                                                    <input id="ratings-hidden" name="rating" type="hidden">
+                                                                    <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Viết nhận xét của bạn tại đây..." required=""></textarea>
+                                                                    <div class="full_bt center">
+                                                                        <button class="btn sqaure_bt w-15" type="submit">gửi</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                <div class="main_heading text_align_left" style="margin-bottom: 35px;">
+                                    <p class="h3">Sản phẩm liên quan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start related product -->
+                    <div class="row">
+                        @foreach (var item in relatedproduct)
+                        {
+                            <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
+                                <div class="product_list">
+                                    <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                        <div class="product_img"> <img class="img-responsive" src="@(item.image != null? item.image : defaultImg)" alt=""> </div>
+                                        <div class="product_detail_btm">
+                                            <div class="center">
+                                                <p>
+                                                    @item.product_name
+                                                </p>
+                                            </div>
+                                            <div class="starratin">
+                                                <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                            </div>
+                                            <div class="product_price">
+                                                <p>
+                                                    @if (item.Discount != null)
+                                                    {
+                                                        if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                        {
+                                                            <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0 ₫"))</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="side_bar">
+                        <div class="side_bar_blog">
+                            <p class="h4">Tìm Kiếm</p>
+                            <div class="side_bar_search">
+                                <div class="input-group stylish-input-group">
+                                    <form action="@Url.Action("SearchResult", "Products")">
+                                        <input name="s" class="form-control" placeholder="Tìm kiếm..." type="text">
+                                    </form>
+                                    <span class="input-group-addon ms-4">
+                                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <p class="h4">
+                                Laptop</>
+                                <div class="categary">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i> Theo thương hiệu</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i> Theo nhu cầu</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Theo kích thước</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i> Laptop theo giá</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i> Laptop theo cấu hình chip</a></li>
+                                    </ul>
+                                </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <p class="h4">Phụ kiện</p>
+                            <div class="categary">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> Balo, túi chống xốc</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> Chuột</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> Bàn phím</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> Đế tản nhiệt</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <p class="h4">TAG</p>
+                            <div class="tags">
+                                <ul>
+                                    <li><a href="#">Laptop</a></li>
+                                    <li><a href="#">Phụ kiện</a></li>
+                                    <li><a href="#">Apple</a></li>
+                                    <li><a href="#">Macbook</a></li>
+                                    <li><a href="#">Asus</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        </script>
+    </div>
+    <!-- end section -->
+</div>@section scripts{
+    <script src="~/Scripts/my_js/product/detail.js"></script>
+
+}

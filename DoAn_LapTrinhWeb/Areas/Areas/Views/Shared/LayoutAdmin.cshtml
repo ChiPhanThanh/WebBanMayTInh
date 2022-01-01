@@ -1,0 +1,232 @@
+﻿@using DoAn_LapTrinhWeb.Common.Helpers
+<!DOCTYPE html>
+<html>
+@Html.Partial("_MessageAlert")
+<head>
+
+    <meta charshet="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/Images/fevicon/favicon.png" type="image/png" />
+    <title>Quản trị hệ thống: @ViewBag.Title</title>
+    <link href="~/Public/admin/css/style.css" rel="stylesheet"/>
+    <link href="~/Public/admins/style.css" rel="stylesheet"/>
+    <link href="~/Public/admins/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Public/admin/status/css/sweetalert2.min.css" rel="stylesheet"/>
+    <link href="~/Public/admin/status/css/toastr.min.css" rel="stylesheet"/>
+
+    <link href="~/Public/admins/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Public/admins/css/animate.css" rel="stylesheet"/>
+    <link href="~/Public/admins/style.css" rel="stylesheet"/>
+    <!-- FooTable -->
+    <link href="~/Public/admins/css/plugins/footable/footable.core.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Public/admin/status/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/script.js"></script>
+
+</head>
+
+<body>
+<style>
+        .navbar-top-links .dropdown-alerts {
+            width: 230px;
+        }
+    </style>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="navbar-header">
+                    <div class="dropdown profile-element">
+
+                        <a href="#" style="text-align: center;">
+                            <h1 class="block m-t-xs font-bold">@User.Identity.GetUsername()</h1>
+                            <span class="text-muted text-xs block">Quản trị viên</span>
+                        </a>
+
+                    </div>
+                    <div class="logo-element">
+                        ADMIN
+                    </div>
+                </li>
+
+                <li class="active">
+                    <a href="@Url.Action("Index", "Dashboard")">
+                        <i class="fa fa-tachometer"></i> <span class="nav-label">Bảng điều khiển</span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bars"></i> <span class="nav-label">Sản phẩm</span> <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index", "ProductsAdmin")">Sản phẩm</a>
+                            <a href="@Url.Action("Index", "Genres")" class="">Thể loại</a>
+                            <a href="@Url.Action("Index", "Brands")" class="">Thương hiệu</a>
+                            <a href="@Url.Action("Index", "Discounts")" class="">Chương trình giảm giá</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-credit-card"></i> <span class="nav-label">Quảng cáo</span> <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index", "Banners")">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-shopping-bag"></i> <span>Đơn hàng</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index", "Orders")">Danh sách</a>
+                            <a href="@Url.Action("Index", "Payments")">Thanh toán</a>
+                            <a href="@Url.Action("Index", "Deliveries")">Vận chuyển</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Users")">
+                        <i class="fa fa-users"></i> <span>Quản trị</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index", "Users")">User</a>
+                            <a href="@Url.Action("Index", "Admins")">Admin</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Contacts")">
+                        <i class="fa fa-id-card"></i> <span>Liên hệ</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index", "Contacts")">Danh sách</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                        <i class="fa fa-bars"></i>
+                    </a>
+
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Chào mừng bạn đến với Quản trị Shop.</span>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-user "></i> Xin chào, @User.Identity.GetUsername()
+
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="@Url.Action("ViewProfile", "Base")" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-user"></i> Tài khoản của tôi
+
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("BackToHome", "Base")" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-home"></i> Về trang chủ
+
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Base")" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-sign-out"></i> Đăng xuất
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- renderbody -->
+        @RenderBody()
+        <!-- renderbody -->
+
+        <div class="footer">
+            <div>
+                NVT © Copyrights 2021 Công Ty TNHH NVT Computer
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="~/Public/admin/js/plugins/fullcalendar/moment.min.js"></script>
+
+<!-- Mainly scripts -->
+
+<script src="~/Public/admin/js/jquery-3.1.1.min.js"></script>
+<script src="~/Public/admin/js/popper.min.js"></script>
+<script src="~/Public/admin/js/bootstrap.js"></script>
+<script src="~/Public/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="~/Public/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="~/Public/admin/status/js/karma.laclac.min.js"></script>
+<script src="~/Public/admin/status/js/sweetalert2.min.js"></script>
+<script src="~/Public/admin/status/js/toastr.min.js"></script>
+
+
+<!-- Custom and plugin javascript -->
+<script src="~/Public/admin/js/inspinia.js"></script>
+<script src="~/Public/admin/js/plugins/pace/pace.min.js"></script>
+
+<!-- FooTable -->
+<script src="~/Public/admin/js/plugins/footable/footable.all.min.js"></script>
+<!-- jQuery UI -->
+<script src="~/Public/admin/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+@* <script> *@
+@*         $(document).ready(function () { *@
+@* *@
+@*             $('.footable').footable(); *@
+@*             $('.footable2').footable(); *@
+@* *@
+@*         }); *@
+@* *@
+@*     </script> *@
+
+</body>
+</html>

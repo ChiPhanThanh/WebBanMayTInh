@@ -1,0 +1,123 @@
+﻿@model DoAn_LapTrinhWeb.DTOs.OrderDTOs
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Đơn hàng</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                                            <a href="@Url.Action("Index", "Dashboard")"><u>Bảng điều khiển</u></a>
+                                        </li>
+            <li class="breadcrumb-item">
+               <a href="@Url.Action("Index", "Orders")"><u>Đơn hàng</u></a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Chi tiết đơn hàng</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+                <br/>
+                <a class="btn btn-info" href="@Url.Action("Index", "Orders")">
+                    <i class="fa fa-arrow-left"></i><span class="Bold"> Quay về</span>
+                </a>
+                <a class="btn btn-danger" href="@Url.Action("Trash", "Orders")"><i class="fa fa-trash"></i><span class="Bold"></span> Thùng rác</a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                   <small style="font-size:20px;color: red;">Mã đơn hàng #@Model.order_id</small>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <table class="table border">
+                                <thead>
+                                <tr>
+                                    <th>Thông tin nhận hàng</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Họ tên KH: <b> @Model.Name</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại: <b> @Model.Phone</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ: <b> @Model.Addres</b></td>
+                                </tr>
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="col-md-7">
+                            <table class="table border">
+                                <thead>
+                                <tr style="text-align: center">
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th class="text-center">SL</th>
+                                    <th>Tổng</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @{
+                                    double thanhTien = 0;
+                                    foreach (var c in ViewBag.orderDetails)
+                                    {
+                                        thanhTien += c.price * c.quantity;
+                                        <tr style="text-align: center">
+                                            @foreach (var y in ViewBag.orderProduct)
+                                            {
+                                                if (y.product_id == c.product_id)
+                                                {
+                                                    <td>
+                                                        <img src="@y.image" width="70">
+                                                    </td>
+                                                }
+                                            }
+                                            <td> @string.Format("{0:0,0₫}", c.price)</td>
+                                            <td class="text-center">@c.quantity</td>
+                                            <td> @string.Format("{0:0,0₫}", c.price * c.quantity) </td>
+                                        </tr>
+                                    }
+                                }
+
+                                <tr class="border-top" style="text-align: center">
+                                    <td class="" colspan="3"> Thành tiền</td>
+                                    <td>@string.Format("{0:0,0₫}", thanhTien) </td>
+                                </tr>
+                                @{
+                                    var ship = 30000;
+                                    <tr style="text-align: center">
+                                        <td class="" colspan="3"> Phí vận chuyển</td>
+                                        <td>@string.Format("{0:0,0₫}", ship) </td>
+                                    </tr>
+                                    <tr style="text-align: center">
+                                        <td class="" colspan="3"> Tổng cộng </td>
+                                        <td><strong>@string.Format("{0:0,0₫}", thanhTien + ship)</strong> </td>
+                                    </tr>
+
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

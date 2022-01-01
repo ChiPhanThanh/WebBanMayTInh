@@ -1,0 +1,216 @@
+﻿@using DoAn_LapTrinhWeb.Common.Helpers
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+
+                                    <li class="active">Chi tiết đơn hàng</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+    <!-- start order detail-->
+
+    <section>
+
+        <div class="container">
+            <div id="ctl00_divCenter" class="center-noleftright">
+                <div class="row no-gutters">
+                    <!--start menu left-->
+                    <div class="col-12 col-lg-3 col-xl-3 3 mt-20px">
+                        <section class="user-info">
+                            <div>
+                                <img class="ms-3" alt="Get your avatar" src="~/Images/it_service/userimage.png" />
+                            </div>
+                            <div class="caption">
+                                <div class="title">Tài khoản của</div>
+                                <div class="name">@User.Identity.GetName()</div>
+                            </div>
+                        </section>
+                        <nav class="user-sidebar">
+                            <ul>
+                                <li class="">
+                                    <a href="@Url.Action("Editprofile", "Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">person</i>
+                                        </div>
+                                        <span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="@Url.Action("ChangePassword", "Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">lock</i>
+                                        </div>
+                                        <span>Đổi mật khẩu</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="@Url.Action("TrackingOrder", "Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">assignment</i>
+                                        </div>
+                                        <span>Quản lý đơn hàng</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--end menu left-->
+                    <!--start menu order detail-->
+
+                    <div class="col-12 col-lg-9 col-xl-9">
+                        <section class="user-page">
+                            @foreach (var item in Model)
+                            {
+                                <div class="user-order">
+                                    <div class="order-detail">
+                                        <div class="order-name">
+                                            Đơn hàng
+                                            <strong>
+                                                #@item.order_id
+                                            </strong>
+                                        </div>
+                                        <div class="order-list">
+                                            <div class="item">
+                                                <div class="order-item">
+                                                    <div class="order-title">
+                                                        <div class="des">
+                                                            @item.oder_date
+                                                        </div>
+                                                        @if (item.status == "2")
+                                                        {
+                                                            <div class="status alert-success">Đặt hàng thành công</div>
+
+                                                        }
+                                                        else
+                                                                if (item.status == "1")
+                                                        {
+                                                            <div class="status alert-info">Đang xử lý</div>
+
+                                                        }
+                                                        else
+
+                                                        {
+                                                            <div class="status alert-danger">Đơn hàng đã bị hủy</div>
+
+                                                        }
+                                                    </div>
+                                                    <div class="row row-s">
+                                                        <div class="col-12 col-md-12 mt-2 mb-2">
+                                                            <div class="order-information">
+                                                                <div class="title">Thông tin đặt hàng</div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <strong></strong>
+                                                                    </li>
+                                                                    <li>
+                                                                        Địa chỉ:
+                                                                    </li>
+                                                                    <li>
+                                                                        Điện thoại:
+                                                                    </li>
+                                                                    <li>
+                                                                        Phương thức vận chuyển: Giao hàng nhanh<a target="_blank" style="color:#2cbde5;font-weight:bold" href="#">
+                                                                            Lịch trình đơn hàng
+                                                                        </a>
+                                                                        <p>
+                                                                            Phí vận chuyển: 0 ₫
+                                                                        </p>
+                                                                    </li>
+                                                                    <li>
+                                                                        Phương thức thanh toán: Chuyển khoản QR VNPAY<p class="payment-status">Chưa thanh toán</p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-product">
+                                                        <!--start order item-->
+                                                        @foreach (var itemoder in ViewBag.itemOrder1)
+                                                        {
+                                                            if (item.order_id == itemoder.order_id)
+                                                            {
+
+                                                                foreach (var p in ViewBag.productOrder1)
+                                                                {
+                                                                    if (p.product_id == itemoder.product_id)
+                                                                    {
+                                                                        <a class="product" href="@Url.Action("ProductDetail", "Products", new { id = p.product_id })">
+                                                                            <div class="img">
+                                                                                <img src="@p.image" alt="@p.product_name">
+                                                                            </div>
+                                                                            <div class="caption">
+                                                                                <div class="name">
+                                                                                    @p.product_name
+                                                                                </div>
+                                                                                <div class="amount">
+                                                                                    Số lượng: @itemoder.quantity
+                                                                                </div>
+                                                                                <div class="price">
+                                                                                    Giá tiền:
+                                                                                    <div class="new">@String.Format("{0:0,0₫}", itemoder.price)</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        <!--end order item-->
+                                                    </div>
+                                                    <div class="order-total">
+                                                        <div class="group">
+                                                            <div class="label">Tạm tính</div>
+                                                            <div class="value">@String.Format("{0:0,0₫}", item.total)</div>
+                                                        </div>
+                                                        <div class="group">
+                                                            <div class="label">Giảm giá</div>
+                                                            <div class="value discount-total">0 ₫</div>
+                                                        </div>
+                                                        <div class="group">
+                                                            <div class="label">
+                                                                Phí vận chuyển
+                                                            </div>
+                                                            <div class="value shipping-total">0 ₫</div>
+                                                        </div>
+                                                        <div class="group total">
+                                                            <div class="label">
+                                                                Tổng tiền
+                                                            </div>
+                                                            <div class="value order-total">@String.Format("{0:0,0₫}", item.total)</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </section>
+                    </div>
+                    <!--end menu order detail-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end order detail-->
+}

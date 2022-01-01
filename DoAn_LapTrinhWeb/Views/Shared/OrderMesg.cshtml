@@ -1,0 +1,23 @@
+﻿@if (TempData["AddOrderSuccess"] != null)
+{
+	<script>
+			var success = @(Convert.ToBoolean(TempData["AddOrderSuccess"]) == true?"true":"false");
+			if (success) {
+				$.toast({
+					heading: 'Thông báo',
+					text: 'Đặt hàng thành công',
+					icon: 'success',
+					hideAfter: 5000,
+					loader: false
+				});
+			} else {
+				$.toast({
+					heading: 'Thông báo',
+					text: 'Đã xảy ra lỗi trong quá trình đặt hàng! So sorry',
+					icon: 'error',
+					hideAfter: 5000,
+					loader: false
+				});
+			}
+	</script>
+}

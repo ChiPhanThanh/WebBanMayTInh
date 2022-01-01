@@ -1,0 +1,160 @@
+﻿@using DoAn_LapTrinhWeb.Models
+@using DoAn_LapTrinhWeb.Common
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+    List<int> quans = ViewBag.Quans as List<int>;
+    double totalPrice = 0d;
+    double shippingFee = 30000d;    // Phí vận chuyển 30k
+}
+<!-- inner page banner -->
+<div id="inner_banner" class="section inner_banner_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <ol class="breadcrumb">
+                                <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                <li class="active">Giỏ hàng của tôi</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end inner page banner -->
+<!--start viewcart-->
+<div class="container mb-250px">
+    <div class="center-noleftright">
+        <div class="row center">
+            <div class="col-9 col-md-9 mb-250px">
+                <div class="Module Module-181">
+                    <div class="ModuleContent">
+                        <section class="cart-step cart-step1 mt-20px">
+                            <div class="cart-overlay"></div>
+                            <div class="cart-title">
+                                <i class="material-icons">shopping_cart</i>
+                                <span>
+                                    Giỏ hàng của bạn (có
+                                    <strong id="cartCount">0</strong> @*đếm sản phẩm có trong giỏ hàng*@
+                                    sản phẩm)
+                                </span>
+                            </div>
+                            <div class="btn-wrap">
+                                <a class="btn-back fw-bold" href="/">Tiếp tục mua hàng</a>
+                            </div>
+                            <!--start chi tiết giỏ hàng và giá-->
+                            <div class="cart-table">
+                                <!--start sản phẩm và giá tiền-->
+                                @for (int i = 0; i < Model.Count(); i++)
+                                {
+                                    var item = Model.ElementAt(i);
+                                    var quan = quans[i];                               
+                                    var price = item.price;
+
+                                    if (item.Discount != null)
+                                    {
+                                        if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                        {
+                                            price = item.price - item.Discount.discount_price;
+                                        }
+                                    }
+                                    totalPrice += quan * price; 
+                                    <div class="item ">
+                                        <div class="cart-item ">
+                                            <a class="img" href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                                <img src="@(item.image)" alt="@item.product_name">
+                                            </a>
+                                            <div class="caption col-md-3">
+                                                <div class="item-info">
+                                                    <a class="name " href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">@item.product_name</a>
+                                                    <div class="amount">
+                                                        Số lượng:
+                                                        <div class="input-number">
+                                                            <div class="btn-spin btn-dec">-</div>
+                                                            <input type="text" maxlength="10" data-id="@item.product_id"
+                                                                   data-price="@price" class="qty-input fw-normal" value="@quan">
+                                                            <div class="btn-spin btn-inc">+</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-price">
+                                                    <div class="new">@price.ToString("#,0₫")</div>
+                                                </div>
+                                            </div>
+                                            <a href="#!" class="endright">
+                                                <i class="material-icons js-delete" data-id="@item.product_id">delete</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                <!--end sản phẩm và giá tiền-->
+                            </div>
+                            <!--end chi tiết giỏ hàng và giá-->
+                            <!--start giảm giá, và tính tổng tiền-->
+                            <div class="row">
+                                <div class="col-12 col-md-8">
+                                    <div class="cart-coupon">
+                                        <div class="input-coupon">
+                                            <input type="text" autocomplete="off" max-length="20" placeholder="Nhập mã giảm giá"> @*thêm mã giảm giá*@
+                                            <button class="btn-submitcoupon">Áp dụng</button>
+                                            <div class="coupon-apply-error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 ">
+                                    <div class="cart-total fw-normal">
+                                        <div class="group">
+                                            <div class="label">
+                                                Tạm tính:
+                                            </div>
+                                            <div class="value" id="totalPrice">@totalPrice.ToString("#,0₫")</div>
+                                        </div>
+                                        <div class="group">
+                                            <div class="label">
+                                                Giảm giá:
+                                            </div>
+                                            <div class="value" id="discount">0₫</div>
+                                        </div>
+                                        <div class="group">
+                                            <div class="label">
+                                                Phí vận chuyển:
+                                            </div>
+                                            <div class="value shipping-total">@shippingFee.ToString("#,0₫")</div>
+                                        </div>
+                                        <div class="group total">
+                                            <div class="label">
+                                                Thành tiền:
+                                            </div>
+                                            <div class="value order-total" id="totalPriceWithFee">@((totalPrice + shippingFee).ToString("#,0₫"))</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row float-right mt-3 me-0">
+                                @if (User.IsInRole(Const.ROLE_ADMIN_NAME)) //nếu bạn là admin thì sẽ không thêm được số lượng
+                                {
+                                <a href="" class="disabled-href rounded-100px p-1 ps-3 pe-3 btn-danger">Chức năng chỉ dùng cho User</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Checkout","Cart")" class="btn-continue js-checkout">Thanh toán</a>
+                                }
+                                @*nếu chưa đăng nhập sẽ bắt người dùng chuyển qua đăng nhâp(xem action checkout của controllercart)*@
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end viewcart-->
+@section scripts{
+    <script src="~/Scripts/my_js/cart_js/cart.js"></script>
+}

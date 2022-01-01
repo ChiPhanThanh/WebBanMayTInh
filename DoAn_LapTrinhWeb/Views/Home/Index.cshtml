@@ -1,0 +1,618 @@
+﻿@using DoAn_LapTrinhWeb.Models
+@model IEnumerable<DoAn_LapTrinhWeb.Models.Product>
+@{
+    ViewBag.Title = "NVT Computer - Laptop, phụ kiện giá rẻ";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+    string defaultImg = "/Content/Images/no-image.jpg";
+    var sanphamhot = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.sanphamhot;
+    var laptopgaming = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.laptopgaming;
+    var hoctapvanphong = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.hoctapvanphong;
+    var phukien = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.phukien;
+    var caocapsangtrong = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.caocapsangtrong;
+    var dohoakithuat = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.dohoakithuat;
+}
+
+<div class="it_service">
+    <div id="fadeshow1" class="container-fluid">
+        <div id="fadeshow1" class="position-fixed float-left start-10 top-30">
+            <a class="" href="@Url.Action("Bannerdetail", "discount")" target="_blank"><img class="rounded-2 shadow-lg" src="https://res.cloudinary.com/van-nam/image/upload/v1626974402/SourcesWeb/image/banner/banner-vertical_uhkqs5.jpg" width="150" height="350" /></a>
+        </div>
+        <div class="position-fixed float-right end-10 top-30 ">
+            <a href="@Url.Action("Bannerdetail", "discount")" target="_blank"><img class="rounded-2 shadow-lg" src="https://res.cloudinary.com/van-nam/image/upload/v1626974402/SourcesWeb/image/banner/banner-vertical_uhkqs5.jpg" width="150" height="350" /></a>
+        </div>
+    </div>
+    <!-- start slide quảng cáo-->
+    <div class="container">
+        <div class="row ">
+            <div class="mt-20px col-lg-3 rounded-3">@Html.Action("Genrelistpartial", "Products")</div>
+            <div class=" col-lg-9">
+                <div class="carousel slide mt-20px " id="main-carousel" data-ride="carousel">
+                    <div class="carousel-inner  rounded-3 shadow-lg">
+                        <div class="carousel-item active">
+                            <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                                <img class="d-block img-fluid" src="~/Content/Images/banner-horizonal-1.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                                <img class="d-block img-fluid" src="~/Content/Images/banner-horizonal-2.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                                <img class="d-block img-fluid" src="~/Content/Images/banner-horizonal-3.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                                <img src="~/Content/Images/banner-horizonal-4.jpg" alt="" class="d-block img-fluid">
+                            </a>
+                        </div>
+                    </div><!-- /.carousel-inner -->
+
+                    <a href="#main-carousel" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="sr-only" aria-hidden="true">Prev</span>
+                    </a>
+                    <a href="#main-carousel" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="sr-only" aria-hidden="true">Next</span>
+                    </a>
+                </div><!-- /.carousel -->
+            </div>
+        </div>
+    </div><!-- /.container -->
+    <!-- end slide quảng cáo -->
+    <!-- start slide quảng cáo-->
+    <div id="fadeshow2" class="container mt-2 ">
+        <div class="row ">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                    <img class="img-responsive rounded-3 shadow-lg"
+                         src="~/Content/Images/banner-mini-1.png">
+                </a>
+            </div>
+
+            <div class="col-lg-3 ">
+                <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                    <img class="img-responsive rounded-3 shadow-lg"
+                         src="~/Content/Images/banner-mini-2.jpg"
+                         alt="">
+                </a>
+            </div>
+            <div class="col-lg-3 ">
+                <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                    <img class="img-responsive rounded-3 shadow-lg"
+                         src="~/Content/Images/banner-mini-3.png"
+                         alt="">
+                </a>
+            </div>
+            <div class="col-lg-3  ">
+                <a href="@Url.Action("Bannerdetail", "Discount")" target="_blank">
+                    <img class="img-responsive rounded-3"
+                         src="~/Content/Images/banner-mini-4.png"
+                         alt="">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- /.container -->
+    <!-- end slide quảng cáo -->
+    <!-- start sản phẩm hot -->
+    <div class="section padding_layout_1 ">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Sản Phẩm Hot</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                @foreach (var item in sanphamhot)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)" alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0 ₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- end sản phẩm hot -->
+    <!-- start học tập - văn phòng -->
+    <div class="section padding_layout_1">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Học Tập - Văn Phòng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in hoctapvanphong)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)"
+                                         alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                                      aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end học tập - văn phòng -->
+    <!---->
+    <!---->
+    <!-- start Đồ Hoạ - Kĩ Thuật -->
+    <div class="section padding_layout_1">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Đồ Hoạ - Kĩ Thuật</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in dohoakithuat)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)"
+                                         alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                                      aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end Đồ hoạ -kĩ thuật -->
+    <!-- start Laptop gaming -->
+    <div class="section padding_layout_1 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Laptop Gaming</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in laptopgaming)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)"
+                                         alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                                      aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end laptop gaming -->
+    <!-- start cao cấp sang trọng -->
+    <div class="section padding_layout_1">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Cao Cấp - Sang Trọng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in caocapsangtrong)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)"
+                                         alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end cao cấp - sang trọng -->
+    <!-- start phụ kiện -->
+    <div class="section padding_layout_1">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Phụ Kiện</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in phukien)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                <div class="product_img">
+                                    <img class="img-responsive"
+                                         src="@(item.image != null? item.image : defaultImg)"
+                                         alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <p>
+                                            @item.product_name
+
+                                        </p>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center">
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                                      aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p>
+                                            @if (item.Discount != null)
+                                            {
+                                                if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                {
+                                                    <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0₫"))</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end phụ kiện -->
+    <!-- start Tin Tức Mới Nhất-->
+    <div class="section padding_layout_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading ">
+                            <p class="h4 text-uppercase">Tin Tức Mới Nhất</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_colum">
+                        <a href="@Url.Action("News", "News")">
+                            <div class="blog_feature_img">
+                                <img src="https://cdn.techzones.vn/Data/Sites/1/News/3088/thumbs/450xtechzones-cpu-amd-tren-desktop-co-con-nong-nhu-loi-don-.jpg"
+                                     alt="#" />
+                            </div>
+                            <div class="post_time">
+                                <p><i class="fa fa-clock-o"></i> 27/06/2021</p>
+                            </div>
+                            <div class="blog_feature_head">
+                                <h4>CPU AMD trên desktop có còn nóng như lời đồn ?</h4>
+                            </div>
+                            <div class="blog_feature_cont">
+                                <p class="limitlinetext">
+                                    AMD là một trong những hãng công nghệ luôn nằm trong top đầu trên thị trường hiện
+                                    nay.
+                                    Các dòng phân khúc sản phẩm thuộc AMD đều nhận được đánh giá, phản hồi tích cực từ người dùng.
+                                    Đặc biệt là CPU AMD là một cái tên lừng lẫy không thể bỏ qua khi nhắc đến thương hiệu AMD nói riêng và
+                                    sản phẩm CPU nói chung.
+                                    Tuy nhiên có rất nhiều luồng ý kiến cho rằng liệu CPU AMD trên Desktop có còn nóng như lời đồn? Bạn suy
+                                    nghĩ như thế nào về ý kiến trên.
+                                    Còn chúng tôi câu trả lời nằm trong bài viết dưới đây.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_colum">
+                        <a href="@Url.Action("News", "News")">
+                            <div class="blog_feature_img">
+                                <img src="https://cdn.techzones.vn/Data/Sites/1/media/tin-t%E1%BB%A9c-/co-nen-su-dung-gaming-laptop-cho-lam-viec-van-phong/co-nen-su-dung-gaming-laptop-cho-lam-viec-van-phong.jpg?w=1920"
+                                     alt="#" />
+                            </div>
+                            <div class="post_time">
+                                <p><i class="fa fa-clock-o"></i> 25/06/2021</p>
+                            </div>
+                            <div class="blog_feature_head">
+                                <h4>Có nên sử dụng gaming laptop để làm việc văn phòng không?</h4>
+                            </div>
+                            <div class="blog_feature_cont">
+                                <p class="limitlinetext">
+                                    Với nhu cầu làm việc văn phòng hầu như ai cũng cần đến một chiếc laptop. Tuy
+                                    nhiên lựa chọn dòng laptop nào để thật sự phù hợp lại là câu hỏi khó.
+                                    Gaming laptop là một dòng máy tính xách tay rất được nhắc đến dạo gần đây cho dân làm việc văn phòng.
+                                    Vậy theo bạn có nên sử dụng gaming laptop
+                                    để làm việc hay không? Hãy đón chờ xem câu trả lời dưới đây có trùng khớp với bạn không nhé.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_colum">
+                        <a href="@Url.Action("News", "News")">
+                            <div class="blog_feature_img">
+                                <img src="https://cdn.techzones.vn/Data/Sites/1/media/tin-t%E1%BB%A9c-/lua-chon-laptop-gaming-nhu-the-nao-la-hop-ly/lua-chon-mua-laptop-gaming-nhu-the-nao-la-phu-hop.jpg"
+                                     alt="#" />
+                            </div>
+                            <div class="post_time">
+                                <p><i class="fa fa-clock-o"></i> 24/06/2021</p>
+                            </div>
+                            <div class="blog_feature_head">
+                                <h4>Lựa chọn laptop gaming như thế nào là phù hợp</h4>
+                            </div>
+                            <div class="blog_feature_cont">
+                                <p class="limitlinetext">
+                                    Bạn đang muốn trang bị cho mình một chiếc laptop gaming nhưng lại đang không biết
+                                    lựa chọn laptop gaming như thế nào là phù hợp.
+                                    Thì bạn tìm đúng địa chỉ rồi nhé, bài viết cực kỳ lý thú và thiết thực này sẽ giúp bạn
+                                    không những mua đúng laptop gaming thật sự ưng ý mà còn giúp bạn thỏa mãn nh cầu khám phá dòng laptop
+                                    chơi game quốc dân này.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Tin Tức Mới Nhất-->
+    <!-- start Nhãn Hàng Đồng Hành -->
+    <div id="fadeshow1" class="section padding_layout_1 ">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="full">
+                        <div class="main_heading1">
+                            <p class="h4 text-uppercase">Nhãn Hàng Đồng Hành</p>
+                        </div>
+                        <ul class="brand_list">
+                            <li><a href="https://www.msi.com/" target="_blank"><img cl src="~/Images/it_service/msi_brand.png" alt="#" /></a></li>
+                            <li><a href="https://www.dell.com/" target="_blank"><img src="~/Images/it_service/dell_brand.png" alt="#" /></a></li>
+                            <li><a href="https://www.asus.com/" target="_blank"><img src="~/Images/it_service/asusbrand.png" alt="#" /></a></li>
+                            <li><a href="https://www.acer.com/" target="_blank"><img src="~/Images/it_service/acer_brand.png" alt="#" /></a></li>
+                            <li><a href="https://www.lenovo.com/" target="_blank"><img src="~/Images/it_service/lenovo_brand.png" alt="#" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Nhãn Hàng Đồng Hành -->
+    
+</div>

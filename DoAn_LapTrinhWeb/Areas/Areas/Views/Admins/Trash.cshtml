@@ -1,0 +1,87 @@
+﻿@model List<DoAn_LapTrinhWeb.DTOs.UserDTOs>
+
+@{
+    ViewBag.Title = "Thùng rác";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="row wrapper wrapper-content white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Quản trị viên</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a>Bảng điều khiển</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Quản trị viên</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Thùng rác</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+        <br />
+        <a class="btn btn-success" href="@Url.Action("Index", "Admins")"><i class="fa fa-reply"></i><span class="Bold">Quay về</span></a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                            <tr>
+                                <th><b>Tên người dùng</b></th>
+                                <th><b>Tên đăng nhập</b></th>
+                                <th><b>Email</b></th>
+                                <th><b>Số điện thoại</b></th>
+                                <th><b>Quyền</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.username)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Role)
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltrip" data-placement="top" title="Xóa">
+                                            <a href="@Url.Action("Delete", "Admins", new {id = item.account_id})" class="text-white"><i class="fa -fa-trash"></i></a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <ul class="pagination float-right"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Bảng Điều Khiển";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-cart-plus fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span>Đơn Hàng Mới</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountOrderWaitting</h2>
+                        <a href="@Url.Action("Index", "Orders")" title="Order" target="_blank" style="color: black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-shopping-bag fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Đơn Hàng Đang Xử Lý</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountOrderProcessing</h2>
+                        <a href="@Url.Action("Index", "Orders")" title="Order" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-shopping-bag fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Đơn Hàng Hoàn thành</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountOrderComplete</h2>
+                        <a href="@Url.Action("Index", "Orders")" title="Order" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-shopping-bag fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Đơn Hàng Bị Huỷ</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountOrderCanceled</h2>
+                        <a href="@Url.Action("Index", "Orders")" title="Order" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-shopping-bag fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Tổng Doanh Thu</span>
+                        <h2 class="font-bold" style="font-size: 20px">
+                            <td> @string.Format("{0:0,0₫}", ViewBag.CountTurnover)</td>
+                        </h2>
+                        <a href="@Url.Action("Index", "Orders")" title="Order" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Tổng Số Sản Phẩm</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountProducts</h2>
+                        <a href="@Url.Action("Index", "Users")" title="User" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-id-card fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span> Liên Hệ Khách Hàng</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountContact</h2>
+                        <a href="@Url.Action("Index", "Contacts")" title="Contact" target="_blank" style="color:black">
+                            <span>Truy cập ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span>Tổng Khách Hàng</span>
+                        <h2 class="font-bold" style="font-size: 20px">@ViewBag.CountUsers</h2>
+                        <a href="@Url.Action("Index", "Users")" title="User" target="_blank" style="color:black">
+                            <span>Truy Cập Ngay</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

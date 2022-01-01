@@ -1,0 +1,12 @@
+﻿@using DoAn_LapTrinhWeb.Model
+@model IEnumerable<DoAn_LapTrinhWeb.Model.Genre>
+<div >
+    <div class="shadow-sm rounded-2 categary2">
+        <ul class="rounded-2">
+            @foreach (var lsp in Model)
+            {
+            <li> <i class="fa fa-angle-right"></i> @Html.ActionLink(@lsp.genre_name, "Listgenreproductlaptop", "Products", new { id = @lsp.genre_id }, null)</li>  
+            }
+            </ul>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+﻿@model DoAn_LapTrinhWeb.Models.Account
+@{
+	ViewBag.Title = "Checkout";
+	Layout = "~/Views/Shared/Main_Layout.cshtml";
+	
+
+	var discountPrice = Convert.ToDouble(ViewBag.Discount);
+	var total = Convert.ToDouble(ViewBag.Total);    // Giá sau khi áp dụng mã giảm giá, được tính ở controller
+	var price = total + discountPrice;  // giá gốc trước khi giảm
+	var shippingFee = 30000d;           // Phí vận chuyển 30k
+	total += shippingFee;
+	TempData["Total"] = total;
+}
+<!--start checkout-->
+<div class="container center ">
+	<div class="col-md-9">
+		<!--start phương thức thanh toán-->
+		<form method="post" action="@Url.Action("SaveOrder","Cart")">
+			<div class="Module Module-359 mt-20px">
+				<div class="ModuleContent">
+					<section class="cart-step">
+						<div class="cart-title">
+							<i class="material-icons">payment</i>
+							<span>Phương thức thanh toán</span>
+						</div>
+						<div class="cart-payment">
+							<div class="payment-method r-tabs">
+								<!-- start list phương thức thanh toán -->
+								<ul class="r-tabs-nav">
+									<li class="method-select r-tabs-tab r-tabs-state-active">
+										<a class="r-tabs-state-active r-tabs-anchor" href="#tab1">
+											<label class="method-item" data-id="1">
+												<div class="icon">
+													<img src="~/Images/it_service/cod.png">
+												</div>
+												<div class="name">Thanh toán khi nhận hàng</div>
+											</label>
+										</a>
+									</li>
+								</ul>
+								<!-- end list phương thức thanh toán -->
+								<!-- start thanh toan khi nhận hàng -->
+								<div class="method-content r-tabs-state-active r-tabs-panel" id="tab1" style="">
+									<div class="content">
+										<div class="method-img"><img alt="" src="/Data/Sites/1/media/icon/cart/m1.png"></div>
+										<div class="method-detail">
+											<div class="method-name">Thanh toán khi nhận hàng</div>
+											<div class="method-des">
+												Quý khách sẽ thanh toán bằng
+												<strong>tiền mặt</strong>
+												khi đơn vị vận chuyển giao hàng giao hàng tận nơi.
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end thanh toan khi nhận hàng -->
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!--end phương thức thanh toán-->
+			<!--Start thông tin người nhận-->
+			<div class="row">
+				<div class=" col-md-6">
+					<div class="user-page">
+						<div class="page-title">Thông tin Người nhận</div>
+						<div class="user-form">
+							<div class="form-wrap">
+								<!-- start form group -->
+								<div>
+									<div class="settingrow form-group mb-4">
+										<label class="settinglabel control-label col-sm-4">Họ tên</label>
+										<div class="col-sm-8">
+											<input type="text" value="@Model.Name" required tabindex="1" class="form-control"><span title="Vui lòng nhập họ tên." style="display: none">Vui lòng nhập họ tên.</span>
+										</div>
+									</div>
+									<div class="settingrow form-group mb-4">
+										<label class="settinglabel control-label col-sm-4">Địa chỉ</label>
+                                        <div class="col-sm-8">
+                                            @*<input type="text" value="@Model.Addres_1" required tabindex="2" class="form-control">*@
+                                            <select class="form-control">
+													@if (!String.IsNullOrEmpty(Model.Addres_1))
+													{	
+														<option value="@Model.Addres_1">@Model.Addres_1</option>
+													}
+													@if (!String.IsNullOrEmpty(Model.Addres_2))
+													{
+														 <option value="@Model.Addres_2">@Model.Addres_2</option>
+													}
+													@if (!String.IsNullOrEmpty(@Model.Addres_3))
+													{
+														 <option value="@Model.Addres_3">@Model.Addres_3</option>
+													}
+												</select>
+                                            <span title="Vui lòng nhập địa chỉ." style="display: none">Vui lòng nhập địa chỉ.</span>
+                                        </div>
+									</div>
+									<div class="settingrow form-group mb-4">
+										<label class="settinglabel control-label col-sm-4">Số điện thoại</label>
+										<div class="col-sm-8">
+											<input type="text" value="@Model.Phone"
+												   required maxlength="10" tabindex="3" class="form-control" />
+											<span title="Vui lòng nhập địa chỉ." style="display: none">Vui lòng nhập điện thoại.</span>
+										</div>
+									</div>
+									<div class="settingrow form-group  mb-4">
+										<label class="settinglabel control-label col-sm-4">Lời nhắn</label>
+										<div class="col-sm-8">
+											<textarea name="OrderNote" tabindex="4" cols="40" class="w-100 form-control" rows="2" placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+											<div class="form-des">(Không bắt buộc)</div>
+										</div>
+									</div>
+									<!-- end form group -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end thông tin nhận hàng-->
+				<!--start tóm tắt-->
+				<div class="col-md-6">
+					<div class="shopping-cart-cart pb-41px">
+						<div class="page-title">Tóm tắt</div>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<div class="label">
+											Tạm tính:
+										</div>
+									</td>
+									<td class="text-right"> <div class="value">@price.ToString("#,0")₫</div></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="label">
+											Giảm giá:
+										</div>
+									</td>
+									<td class="text-right"> <div class="value">@discountPrice.ToString("#,0")₫</div></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="label"> Phí vận chuyển:  </div>
+									</td>
+									<td class="text-right"><div class="value">@shippingFee.ToString("#,0")₫</div></td>
+								</tr>
+								<tr>
+									<td><div class="label"> Thành tiền:  </div></td>
+									<td class="text-right"><div class="value order-total h5 fw-bold text-danger text-si">@total.ToString("#,0")₫</div></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="ps-2 pe-2">
+							<button type="submit" class="btn bt_main w-100 mt-2 mb-1">ĐẶT HÀNG NGAY</button>
+							<div class="text-danger center">(Bấm đặt hàng để xác nhận thanh toán)</div>
+						</div>
+					</div>
+				</div>
+				<!--end tóm tắt-->
+			</div>
+		</form>
+	</div>
+	<!--end thông tin người nhận-->
+</div>
+<!--end checkout-->

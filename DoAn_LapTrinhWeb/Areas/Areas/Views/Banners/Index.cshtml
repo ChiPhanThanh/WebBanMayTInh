@@ -1,0 +1,155 @@
+﻿@model List<DoAn_LapTrinhWeb.Model.Banner>
+
+@{
+    ViewBag.Title = "Danh sách quảng cáo";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@Html.Partial("_MessageAlert")
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Quảng cáo</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a>Bảng điều khiển</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Quảng cáo</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Trang chủ</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+        <br/>
+        <a class="btn btn-success" href="@Url.Action("Create", "Banners")">
+            <i class="fa fa-upload"></i><span class="Bold">Thêm mới</span>
+        </a>
+        <a class="btn btn-danger" href="@Url.Action("Trash", "Banners")">
+            <i class="fa fa-trash">
+                <span class="Bold">Thùng rác(@ViewBag.countTrash)</span>
+            </i>
+        </a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>
+                                <b>Tên quảng cáo: </b>
+                            </th>
+                            <th>
+                                <b>Ngày bắt đầu: </b>
+                            </th>
+                            <th>
+                                <b>Ngày kết thúc: </b>
+                            </th>
+                            <th>
+                                <b>Mô tả quảng cáo: </b>
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @*<th> ảnh chưa làm</th>*@
+                                    <img src="@Html.DisplayFor(modelItem => item.image)" width="80px;"/>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Banners", new {id = item.banner_id})">@item.banner_name</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_star)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_end)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_end)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                        <a href="@Url.Action("Edit", "Banners", new {id = item.banner_id})" class="text-white">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Banners", new {id = item.banner_id})" class="text-white">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<p>
+     @Html.ActionLink("Create New", "Create") 
+ </p> 
+ <table class="table"> 
+     <tr> 
+         <th> 
+             @Html.DisplayNameFor(model => model.banner_name) 
+         </th> 
+         <th> 
+             @Html.DisplayNameFor(model => model.banner_star) 
+         </th> 
+         <th> 
+             @Html.DisplayNameFor(model => model.banner_end) 
+         </th> 
+         <th> 
+             @Html.DisplayNameFor(model => model.description) 
+         </th> 
+         <th> 
+             @Html.DisplayNameFor(model => model.image) 
+         </th> 
+         <th></th> 
+     </tr> 
+ 
+ @foreach (var item in Model) { 
+     <tr> 
+         <td> 
+             @Html.DisplayFor(modelItem => item.banner_name) 
+         </td> 
+         <td> 
+             @Html.DisplayFor(modelItem => item.banner_star) 
+         </td> 
+         <td> 
+             @Html.DisplayFor(modelItem => item.banner_end) 
+         </td> 
+         <td> 
+             @Html.DisplayFor(modelItem => item.description) 
+         </td> 
+         <td> 
+             @Html.DisplayFor(modelItem => item.image) 
+         </td> 
+         <td> 
+             @Html.ActionLink("Edit", "Edit", new { id=item.banner_id }) | 
+             @Html.ActionLink("Details", "Details", new { id=item.banner_id }) | 
+             @Html.ActionLink("Delete", "Delete", new { id=item.banner_id }) 
+         </td> 
+     </tr> 
+ } 
+ 
+ </table>*@

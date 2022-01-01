@@ -1,0 +1,152 @@
+﻿
+@using DoAn_LapTrinhWeb.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<DoAn_LapTrinhWeb.Models.Product>
+@{
+    ViewBag.Title = "Listbrandproductlaptop";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+    string defaultImg = "/Content/Images/no-image.jpg";
+    var listbrandproduct = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.listbrandproduct;
+}
+<div class="it_shop_list">
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                    <li class="active">@ViewBag.Brandname</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+    <!-- section -->
+
+
+    <div class=" section padding_layout_1 product_list_main">
+        <div class="container mt-20px">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        @if (listbrandproduct.Count == 0)
+                        {
+                            <div class="col">
+                                <p class="h3 center">Không có sản phẩm</p>
+                            </div>
+                        }
+                        else
+                        {
+                            foreach (var item in listbrandproduct)
+                            {
+                                <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
+                                    <div class="product_list">
+                                        <a href="~/@SlugGenerator.SlugGenerator.GenerateSlug(item.product_name)-@item.product_id">
+                                            <div class="product_img"> <img class="img-responsive" src="@(item.image != null? item.image : defaultImg)" alt=""> </div>
+                                            <div class="product_detail_btm">
+                                                <div class="center">
+                                                    <p>
+                                                        @item.product_name
+                                                    </p>
+                                                </div>
+                                                <div class="starratin">
+                                                    <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                                </div>
+                                                <div class="product_price">
+                                                    <p>
+                                                        @if (item.Discount != null)
+                                                        {
+                                                            if (item.Discount.discount_star < DateTime.Now && item.Discount.discount_end > DateTime.Now)
+                                                            {
+                                                                <span class="old_price">@item.price.ToString("#,###₫")</span> <span class="new_price">@((item.price - item.Discount.discount_price).ToString("#,0 ₫"))</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="new_price">@item.price.ToString("#,###₫")</span>
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="side_bar">
+                        <!--start tìm kiếm-->
+                        <div class="side_bar_blog">
+                            <p class="h4">Tìm Kiếm</p>
+                            <div class="side_bar_search">
+                                <div class="input-group stylish-input-group">
+                                    <form action="@Url.Action("SearchResult", "Products")">
+                                        <input name="s" class="form-control" placeholder="Tìm kiếm..." type="text">
+                                    </form>
+                                    <span class="input-group-addon ms-4">
+                                        <button><i class="fa fa-search" aria-hidden="true"></i> </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end tìm kiếm-->
+                    </div>
+                    <div class="side_bar_blog">
+                        <p class="h4">Laptop</p>
+                        <div class="categary">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Theo thương hiệu</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Theo nhu cầu</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i>Theo kích thước</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Laptop theo giá</a></li>
+                                <li><a href="i#"><i class="fa fa-angle-right"></i> Laptop theo cấu hình chip</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="side_bar_blog">
+                        <p class="h4">Phụ kiện</p>
+                        <div class="categary">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Balo, túi chống xốc</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Chuột</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Bàn phím</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i> Đế tản nhiệt</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="side_bar_blog">
+                        <p class="h4">TAG</p>
+                        <div class="tags">
+                            <ul>
+                                <li><a href="#">Laptop</a></li>
+                                <li><a href="#">Phụ kiện</a></li>
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Macbook</a></li>
+                                <li><a href="#">Asus</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Phân trang -->
+            @Html.Partial("Pager", Model)
+        </div>
+    </div>
+</div>
+<!-- end section -->

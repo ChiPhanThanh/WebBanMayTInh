@@ -1,0 +1,190 @@
+﻿@model List<DoAn_LapTrinhWeb.DTOs.UserDTOs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Danh sách quản trị viên</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Dashboard")">
+                    <u>Bảng điều khiển</u>
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <strong>Quản trị viên</strong>
+            </li>
+
+        </ol>
+    </div>
+    <div class="col-lg-3">
+        <br/>
+        <a class="btn btn-success" href="@Url.Action("Create", "Brands")">
+            <i class="fa fa-plus-circle"></i><span class="Bold"> Thêm mới</span>
+        </a>
+        <a class="btn btn-danger" href="@Url.Action("Trash", "Brands")">
+            <i class="fa fa-trash">
+                <span class="Bold"> Thùng rác (@ViewBag.countTrash)</span>
+            </i>
+        </a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                        <tr style="text-align: center">
+                            <th>
+                                <b>Tên quản trị viên</b>
+                            </th>
+                            <th>
+                                <b>Tên đăng nhập</b>
+                            </th>
+                            <th>
+                                <b>Email</b>
+                            </th>
+                            <th>
+                                <b>Số điện thoại</b>
+                            </th>
+                            <th>
+                                <b>Quyền</b>
+                            </th>
+                            <th>
+                                <b>Chức năng</b>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="text-align: center">
+                                <td>
+                                    <a href="@Url.Action("Details", "Admins", new {id = item.account_id})">@item.Name</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Role)
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                        <a href="@Url.Action("Edit", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-arrows-h"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmpassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requestcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.create_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.create_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.update_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.update_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmpassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requestcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.update_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.update_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {id = item.account_id}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.account_id})
+            </td>
+        </tr>
+    }
+
+</table>*@

@@ -1,0 +1,80 @@
+﻿@model DoAn_LapTrinhWeb.Models.Contact
+@{
+    ViewBag.Title = "Gửi yêu cầu hỗ trợ";
+}
+
+@using (Html.BeginForm("SentRequest", "Home",
+      null,
+      FormMethod.Post))
+{
+<div class="make_appointment">
+    <!-- start inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                    <li class="active">Gửi yêu cầu</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+    @Html.AntiForgeryToken()
+    <div class="section padding_layout_1">
+        <div class="container mt-75px mb-130px">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
+                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="full">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class=" text_align_center">
+                                    <p class="h2">YÊU CẦU HỖ TRỢ</p><br>
+                                    <p class="mb-20px">Cảm ơn quý khách đã quan tâm đến dịch vụ của chúng tôi. Vui lòng để lại thông tin, chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 appointment_form">
+                                <div class="form_section">
+                                    <form action="Home/Savedata" class="form_contant">
+                                        <fieldset class="row ">
+                                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "field_custom", @placeholder = "Họ tên", @type = "text", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "field_custom", @placeholder = "Điện thoại", @type = "number", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "field_custom", @placeholder = "Email", @type = "email", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "field_custom", @placeholder = "Nội dung:", @type = "text", @required = "required" } })
+                                                        @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="center mt-3">
+                                                <button type="submit" class="btn bt_main w-170px rounded-100px">GỬI YÊU CẦU</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+}

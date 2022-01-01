@@ -1,0 +1,124 @@
+﻿@model List<DoAn_LapTrinhWeb.DTOs.OrderDTOs>
+
+@{
+    ViewBag.Title = "Sản Phẩm";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+@Html.Partial("_MessageAlert")
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class=" col-lg-9">
+        <h2>Đơn hàng</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                                <a href="@Url.Action("Index", "Dashboard")"><u>Bảng điều khiển</u></a>
+                            </li>
+            <li class="breadcrumb-item">
+                <strong>Đơn hàng</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+        <br/>
+        <a class="btn btn-danger" href="@Url.Action("Trash", "Orders")">
+            <i class="fa fa-trash"></i><span class="Bold"> Thùng rác (@ViewBag.countTrash)</span>
+        </a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                          <tr style="text-align: center">
+
+                            <th>Mã đơn hàng</th>
+                              <th>Tên khách hàng</th>
+                              <th>SĐT</th>
+                            <th>Trạng Thái</th>
+                            <th>Tổng tiền hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Chức năng</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                             <tr style="text-align: center">
+                                <td>
+                                    <a href="@Url.Action("Details", "Orders", new {id = item.order_id})">
+                                        @Html.DisplayFor(modelItem => item.order_id)
+                                    </a>
+                                </td>
+                                 <td>
+                                     @Html.DisplayFor(modelItem => item.Name)
+                                 </td>
+                                 <td>
+                                                                     @Html.DisplayFor(modelItem => item.Phone)
+                                                                 </td>
+                                <td class=''>
+                                    <button class="StatusOrder btn p-0" data-status="@item.status" data-id="@item.order_id" data-toggle="modal"
+                                            data-target="#modal-secondary">
+                                        @if (item.status == "1")
+                                        {
+                                            <button type="button" class="btn btn-warning btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Chờ xử lý">
+                                                <a>Chờ xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeProcessing", "Orders", new {id = item.order_id})" class="text-white">Đang xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeComplete", "Orders", new {id = item.order_id})" class="text-white">Hoàn thành</a>
+                                            </button>
+                                        }
+                                        else if (item.status == "2")
+                                        {
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeWaitting", "Orders", new {id = item.order_id})" class="text-white">Chờ xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-success btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Chờ xử lý">
+                                                <a>Đang xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeComplete", "Orders", new {id = item.order_id})" class="text-white">Hoàn thành</a>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeWaitting", "Orders", new {id = item.order_id})" class="text-white">Chờ xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Đang xử lý">
+                                                <a href="@Url.Action("ChangeProcessing", "Orders", new {id = item.order_id})" class="text-white">Đang xử lý</a>
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Chờ xử lý">
+                                                <a>Hoàn thành</a>
+                                            </button>
+                                        }
+
+                                    </button>
+                                </td>
+                                <td>
+                                    @string.Format("{0:0,0₫}", item.price)
+                                </td>
+                                <td>
+
+                                    @Html.DisplayFor(modelItem => item.create_at)
+                                </td>
+                                <td class="">
+                                    <button type="button" class="btn btn-danger btn-sm px-3" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Orders", new {id = item.order_id})" class="text-white">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

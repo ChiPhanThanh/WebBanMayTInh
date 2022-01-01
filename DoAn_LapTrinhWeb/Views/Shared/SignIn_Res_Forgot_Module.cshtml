@@ -1,0 +1,43 @@
+﻿<!--start đăng nhập modal popup-->
+<div class=" modal fade mt-225px" id="ShowModalSignIn">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="h4 center text-uppercase">Đăng nhập</p>
+                <a href="#" class="fa fa-times float-right" data-dismiss="modal"></a>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="loginForm">
+                    <label class="mb-1 text-muted " for="email">Tên đăng nhập</label>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" name="Username" id="User" />
+                        </div>
+                    </div>
+                    <div class="w-100">
+                        <label class="mb-1 text-muted" for="password">Mật khẩu</label>
+                        <a href="@Url.Action("ForgotPassword", "Account")" class="float-end fw-bold">
+                            Quên mật khẩu? @*nếu bạn quên mật khẩu đăng nhập thì ấn vào quên mật khẩu*@
+                        </a>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="input-group">
+                            <input class="form-control" type="password" name="Password" id="Pass" required autofocus />
+                        </div>
+                    </div>
+                   
+                </form>
+                <div class="form-group">
+                    <button class="text-uppercase btn bt_main w-100" type="submit" onclick="SignIn()">Đăng nhập</button>
+                </div>
+            </div>
+            <div class="card-footer py-3 border-0 ">
+                <div class="text-center">
+                    Bạn chưa có tài khoản? <a href="@Url.Action("Register", "Account")"class="fw-bold">Đăng ký</a> @*nếu bạn chưa có tài khoản thì ấn vào đăng ký*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end đăng nhập popup-->
+

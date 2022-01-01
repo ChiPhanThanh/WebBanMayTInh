@@ -1,0 +1,24 @@
+﻿@using DoAn_LapTrinhWeb.Common.Helpers
+<!--Layout gắn module: Header_Layout-->
+
+@if (User.Identity.IsAuthenticated == false)
+{
+    <a class="d-flex" href="#" onclick="PopupModalSignIn()">
+        @*<i class="fa fa-user-circle-o" id="elementID" aria-hidden="true"></i>*@ <span class="material-icons">
+        person
+    </span><div id="elementID">Đăng nhập</div>
+</a>
+}
+else
+{
+<a class="d-flex" href="@Url.Action("Editprofile", "Account")">
+    @*<i class="fa fa-user-circle-o" id="elementID" aria-hidden="true"></i>*@ <span class="material-icons">
+        person
+    </span><div id="elementID">@User.Identity.GetName()</div>
+</a>
+<ul>
+    <li><a href="@Url.Action("Editprofile", "Account")">Thông tin tài khoản</a></li>
+    <li><a href="@Url.Action("TrackingOrder", "Account")">Quản lý đơn hàng</a></li>
+    <li><a class="d-flex" href="@Url.Action("Logout", "Account")"><span class="material-icons">logout</span><div id="margin-account">Đăng xuất</div></a></li>
+</ul>
+}

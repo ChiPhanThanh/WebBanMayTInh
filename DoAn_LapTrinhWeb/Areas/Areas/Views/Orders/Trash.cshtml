@@ -1,0 +1,83 @@
+﻿@model System.Collections.Generic.List<DoAn_LapTrinhWeb.DTOs.OrderDTOs>
+
+@{
+    ViewBag.Title = "Đơn hàng đã hủy";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Đơn hàng hủy</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                              <a href="@Url.Action("Index", "Dashboard")"><u>Bảng điều khiển</u></a>
+
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Dashboard")"><u>Đơn hàng</u></a>
+
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Thùng rác</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+        <br />
+        <a class="btn btn-info" href="@Url.Action("Index", "Orders")">
+  <i class="fa fa-arrow-left"></i><span class="Bold"> Quay về</span>
+        </a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Trạng Thái</th>
+                                <th>Tổng tiền hàng</th>
+                                <th>Ngày đặt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <a href="@Url.Action("Details", "Orders", new {id = item.order_id})">
+                                            @Html.DisplayFor(modelItem => item.order_id)
+                                        </a>
+                                    </td>                                                                                                        
+                                    <td>
+                                        @string.Format("{0:0,0₫}", item.price)
+                                    </td>
+                                    <td>
+
+                                        @string.Format("{0:dd/MM/yyyy}", item.create_at)
+                                    </td>
+                                    <td class="">
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Khôi phục">
+                                            <a href="@Url.Action("Undo", "Orders", new { id = item.order_id})" class="text-white"><i class="fa fa-undo"></i></a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <ul class="pagination float-right"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

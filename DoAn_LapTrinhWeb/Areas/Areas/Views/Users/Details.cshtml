@@ -1,0 +1,179 @@
+﻿@model DoAn_LapTrinhWeb.DTOs.UserDTOs
+
+@{
+    ViewBag.Title = "Chi tiết khách hàng";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Quản trị viên</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a>Bảng điểu khiển</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Quản trị viên</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Chi tiết</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+        <br />
+        <a class="btn btn-success" href="@Url.Action("Index","Users")"><i class="fa fa-mail-reply"></i><span class="Bold">Quay về</span></a>
+        <a class="btn btn-danger" href="@Url.Action("Trash","Users")"><i class="fa fa-trash"></i><span class="Bold">Thùng rác</span></a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5 style="color:blue;"></h5>
+                </div>
+                <div class="ibox-content">
+                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                    <div class="form-group">
+                        <label><b>Tên người dùng: </b> </label>
+                        @Html.DisplayFor(model => model.username)
+                    </div>
+                    <div class="form-group">
+                        <lable><b>Tên đăng nhập: </b></lable>
+                        @Html.DisplayFor(model => model.username)
+                    </div>
+                    <div class="form-group">
+                        <lable><b>Email: </b></lable>
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Số điện thoại: </b></label>
+                        @Html.DisplayFor(model => model.Phone)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Quyền: </b></label>
+                        @Html.DisplayFor(model => model.Role)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Ngày tạo: </b></label>
+                        @Html.DisplayFor(model => model.create_at)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Người tạo: </b></label>
+                        @Html.DisplayFor(model => model.create_by)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Người cập nhập: </b></label>
+                        @Html.DisplayFor(model => model.update_by)
+                    </div>
+                    <div class="form-group">
+                        <label><b>Cập nhập mới: </b></label>
+                        @Html.DisplayFor(model => model.update_at)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*<h2>Details</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confirmpassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confirmpassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Requestcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Requestcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")*@

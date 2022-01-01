@@ -1,0 +1,124 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<DoAn_LapTrinhWeb.DTOs.ProductDTOs>
+@{
+    ViewBag.Title = "thùng rác";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@Html.Partial("_MessageAlert")
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Sản phẩm</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Dashboard")"><u>Bảng điều khiển</u></a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "ProductsAdmin")"><u>Sản phẩm</u></a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Thùng rác</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+        <br/>
+        <a class="btn btn-info" href="@Url.Action("Index", "ProductsAdmin")">
+            <i class="fa fa-arrow-left"></i><span class="Bold"> Quay về</span>
+        </a>
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg">
+    <div class="col-md-12 p-0">
+        <form role="search" action="#" style="padding-top: 15px;">
+            <div class="form-group" style="display:flex">
+                <input type="text" class="form-control" id="searchString" placeholder="Nhập để tìm kiếm..." name="searchString" style="width:20%">
+                <div style="margin-left: 20px; padding-top:8px">
+                    <input type="radio" name="show" value="1" checked style="padding-left:10px" style="margin-left: 20px" />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Sản phẩm
+                    </label>
+                    <input type="radio" name="show" value="2" style="margin-left: 20px" />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Thể loại
+                    </label>
+                    <input type="radio" name="show" value="3" style="margin-left: 20px" />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Sản phẩm khuyến mãi
+                    </label>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+
+                        <tr style="text-align: center">
+                            <th>Tên sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Thương hiệu</th>
+                            <th>Thể loại</th>
+                            <th>Số lượng</th>
+                            <th>Giá gốc</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="text-align: center">
+
+                                <td>
+                                    <a href="@Url.Action("Details", "ProductsAdmin", new {id = item.product_id})" /> @item.product_name
+
+                                    @*@Html.DisplayFor(modelItem => item.product_name)*@
+                                </td>
+                                <td>
+                                    <img src="@Html.DisplayFor(modelItem => item.Image)" width="80px;" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.brand_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.genre_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.quantity)
+                                </td>
+                                <td>
+                                    @string.Format("{0:0,0₫}", item.price)
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                        <a href="@Url.Action("Undo", "ProductsAdmin", new {id = item.product_id})" class="text-white">
+                                            <i class="fa fa-undo"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("Delete", "ProductsAdmin", new {id = item.product_id})" class="text-white">
+                                            <i class="fa fa-ban"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                   <br />
+                   Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                   @Html.PagedListPager(Model, page => Url.Action("Trash", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

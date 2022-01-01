@@ -1,0 +1,167 @@
+﻿@using System.Activities.Statements
+@*Layout sử dụng chính: Main_Layout*@
+<!-- start header -->
+<!-- header top -->
+@using DoAn_LapTrinhWeb.Common
+
+<div class="header_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="full">
+                    <div class="topbar-left">
+                        <ul class="list-inline ">
+                            <li>
+                                <span class="topbar-label">
+                                    <i class="fa fa-home"></i>
+                                </span><span class="topbar-hightlight">
+                                    <a href="https://goo.gl/maps/bg5ZdQms2RJ9JhGZA" target="_blank">
+                                        475A, Điện Biên Phủ, P. 25, Q.
+                                        Bình Thạnh, Tp. Hồ Chí Minh
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="topbar-label"><i class="fa fa-mobile"></i></span> <span class="topbar-hightlight">
+                                    <a href="tel:+84866658801">+84 866 658 801</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @if (User.IsInRole(Const.ROLE_ADMIN_NAME))
+            {
+                <div class="col-md-4 right_section_header_top">
+                    <div class="float-left">
+                        <div class="social_icon ms-5">
+
+                            <ul class="list-inline ms-2">
+                                <li>
+                                    <a class="fa fa-facebook" href="https://www.facebook.com/nvtcomputerofficial/"
+                                       title="FanpageFacebook" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-youtube-play" href="https://www.youtube.com" title="Youtube" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-twitter" href="https://twitter.com/" title="Instagram" target="_blank"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="float-right">
+
+                        <div class="make_appo">
+
+                            <a class="btn white_btn text-uppercase" href="@Url.Action("DashBoard","Admin")">Bảng điều khiển</a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+            <div class="col-md-4 right_section_header_top">
+                <div class="float-left">
+                    <div class="social_icon ms-5">
+
+                        <ul class="list-inline ms-5">
+                            <li>
+                                <a class="fa fa-facebook" href="https://www.facebook.com/nvtcomputerofficial/"
+                                   title="FanpageFacebook" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-youtube-play" href="https://www.youtube.com" title="Youtube" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-twitter" href="https://twitter.com/" title="Instagram" target="_blank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="float-right">
+
+                    <div class="make_appo">
+
+                        <a class="btn white_btn text-uppercase" href="@Url.Action("SentRequest","Home")">Gửi yêu cầu</a>
+
+
+                    </div>
+
+                </div>
+            </div>
+            }
+        </div>
+      
+        
+       
+    </div>
+</div>
+<!-- end header top -->
+<!-- header bottom -->
+<div class="header_bottom ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <!-- logo start -->
+                <div class="logo"> <a href="@Url.Action("Index", "Home")"><img src="~/Images/it_service/it_logofinal1.png" alt="logo" /></a> </div>
+
+                <!-- logo end -->
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <!-- menu start -->
+                <div class="menu_side">
+                    <div id="navbar_menu">
+                        <ul class="first-ul">
+                            <!-- start module: laptop -->
+                            <li>
+                                @Html.Partial("Laptop_Module")
+                            </li>
+                            <!-- end module: laptop -->
+                            <!-- start module: phụ kiện -->
+                            <li>
+                                @Html.Partial("Accessory_Module")
+                            </li>
+                            <!-- end module: phụ kiện -->
+                            <!-- start module: khuyến mãi -->
+                            <li>
+                                @Html.Partial("Discount_Module")
+                            </li>
+                            <!-- end module: khuyến mãi -->
+                            <!-- start module: tin tức -->
+                            <li>
+                                @Html.Partial("News_Module")
+                            </li>
+                            <!-- end module: tin tức -->
+                            <!-- start module: đăng nhập -->
+                            <li>
+                                @Html.Partial("Account_Module")
+                            </li>
+                            <!-- end module: đăng nhập -->
+                            <!-- start module: giỏ hàng -->
+                            <li class="cart">
+                                @Html.Partial("Cart_Module")
+                            </li>
+                            <!-- end module: giỏ hàng -->
+                        </ul>
+                    </div>
+                    <!-- start module: search_icon -->
+                    @Html.Partial("Search_Module")
+                    <!-- end module: search_icon -->
+                </div>
+                <!-- menu end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header bottom end -->
+<!-- end header -->

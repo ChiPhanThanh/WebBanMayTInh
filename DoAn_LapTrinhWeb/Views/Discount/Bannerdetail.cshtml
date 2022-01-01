@@ -1,0 +1,230 @@
+﻿@using DoAn_LapTrinhWeb.Models
+@model IEnumerable<DoAn_LapTrinhWeb.Models.Product>
+@{
+    ViewBag.Title = "Chi tiết sản phẩm khuyến mãi";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+   // string defaultImg = "https://cdn.tgdd.vn/Products/Images/44/239552/apple-macbook-air-m1-2020-16gb-256gb-space-gray-z-600x600.jpg";
+    var sanphamhot = (List<DoAn_LapTrinhWeb.Models.Product>)ViewBag.sanphamhot;
+}
+<div>
+    <img src="~/Content/Images/banner-detail.jpg" style="height:100%;width:100%" />
+</div>
+<!-- start sản phẩm hot -->
+
+    <div class="section padding_layout_1" id="grad" style="padding: 40px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/235406/acer-nitro-an515-55-72p6-i7-nhqbnsv004-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">
+                                        Acer Nitro AN515 55 72P6 i7 10750H/8GB/512GB/4GB
+                                        GTX1650/144Hz/Win10 (NH.QBNSV.004)
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="old_price">25.990.000₫</span> – <span class="new_price">24.690.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/242456/asus-tuf-gaming-fx506lh-i5-bq046t-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">Asus TUF Gaming FX506LH i5 10300H/8GB/512GB/4GB GTX1650/Win10(BQ046T)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="new_price">19.990.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/236962/acer-aspire-7-a715-75g-52s5-i5-nhq85sv002-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">Acer Aspire 7 A715 75G 52S5 i5 9300H/8GB/512GB/4GB GTX1650Ti/Balo/Win10 (NH.Q85SV.002)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="old_price">21.990.000₫</span> – <span class="new_price">20.890.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/237216/hp-pavilion-gaming-15-dk1159tx-i7-10750h-8gb-32gb-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">HP Pavilion Gaming 15 dk1159TX i7 10750H/8GB/32GB+512GB/4GB GTX1650Ti/Win10 (31J36PA)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="old_price">28.990.000₫</span> – <span class="new_price">24.640.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/236427/hp-omen-15-ek0079tx-i7-26y69pa-600x600.jpg " alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">HP Omen 15 ek0079TX i7 10750H/16GB/1TB SSD/6GB RTX2060/300Hz (26Y69PA)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="old_price">46.740.000₫</span> – <span class="new_price">54.990.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/236769/asus-tuf-gaming-fx516pm-i7-hn023t-14-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">Asus TUF Gaming FX516PM i7 11370H/16GB/512GB/6GB RTX3060/144Hz/Win10 (HN023T)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="new_price">32.990.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/240161/dell-inspiron-7501-i5-n5i5012w-600x600.jpg" alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">Dell Inspiron 7501 i5 10300H/8GB/512GB/4GB GTX1650Ti/Win10(N5I5012W)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="new_price">30.490.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive"
+                                 src="https://cdn.tgdd.vn/Products/Images/44/225857/msi-gaming-leopard-10sdr-gl65-i7-242vn-16-600x600.jpg"
+                                 alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <p>
+                                    </h4><a href="it_shop_detail.html">MSI Gaming Leopard 10SDK GL65 i7 10750H/16GB/512GB/144Hz/6GB GTX1660Ti/Win10 (242VN)</a>
+                                </p>
+                            </div>
+                            <div class="starratin">
+                                <div class="center">
+                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                     aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                                                                              aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="old_price">32.990.000₫</span> – <span class="new_price">30.680.000₫</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- end sản phẩm hot -->

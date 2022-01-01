@@ -1,0 +1,75 @@
+﻿@model DoAn_LapTrinhWeb.Model.Genre
+
+@{
+    ViewBag.Title = "Chỉnh sửa danh mục";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@*<!DOCTYPE html>*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9">
+            <h2>Danh mục thể loại</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                                   <a href="@Url.Action("Index", "Dashboard")"><u>Bảng điều khiển</u></a>
+
+                </li>
+                <li class="breadcrumb-item">
+                     <a href="@Url.Action("Index", "Genres")"><u>Thể loại</u></a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>Chỉnh sửa</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-3">
+            <br/>
+            <button class="btn btn-success" type="submit">
+                <i class="fa fa-save"></i><span class="Bold"> Lưu</span>
+            </button>
+            <a class="btn btn-info" href="@Url.Action("Index", "Genres")">
+                <i class="fa fa-arrow-left"></i><span class="Bold"> Quay về</span>
+            </a>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <p>
+                             <small style="font-size:20px;color: red;">@Model.genre_name</small>
+                        </p>
+                    </div>
+                    <div class="ibox-content">
+                     <p>
+                                                <i class="text-danger"><strong>* </strong>Các mục đánh dấu (*) là bắt buộc</i>
+                                            </p>
+                        <form method="get">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(model => model.genre_id)
+                                    @Html.HiddenFor(model => model.create_at)
+                                    @Html.HiddenFor(model => model.create_by)
+                                    <div class="form-group">
+                                        <lable>
+                                            <strong class="input">
+                                                <b>Tên thể loại: <small style="color: red;">(*)</small></b>
+                                            </strong>
+                                        </lable>
+                                        @Html.EditorFor(model => model.genre_name, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.genre_name, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

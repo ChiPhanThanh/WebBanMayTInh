@@ -1,0 +1,200 @@
+﻿@model DoAn_LapTrinhWeb.Model.Banner
+
+@{
+    ViewBag.Title = "Thêm mới quảng cáo";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@Html.Partial("_MessageAlert")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9">
+            <h2>Quảng cáo</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a>Bảng điều khiển</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Quảng cáo</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>Tạo mới</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-3">
+            <br/>
+            <button class="btn btn-success" type="submit">
+                <i class="fa fa-upload"></i><span class="Bold">Thêm mới</span>
+            </button>
+            <a class="btn btn-danger" href="@Url.Action("Index", "Banners")">
+                <i class="fa fa-undo"></i><span class="Bold">Quay về</span>
+            </a>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <p>
+                            <i class="text-danger"><strong>* </strong>Các mục trong đánh dấu (*) không được bỏ trống</i>
+                        </p>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="get">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                                    <div class="form-group">
+                                        <label>
+                                            <b>Tên Quảng Cáo: </b>
+                                        </label>
+                                        @Html.EditorFor(model => model.banner_name, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.banner_name, "", new {@class = "text-danger"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <b>Mô tả quảng cáo: </b>
+                                        </label>
+                                        @Html.EditorFor(model => model.description, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.description, "", new {@class = "text-danger"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <b>Ngày bắt đầu: </b>
+                                        </label>
+                                        @Html.EditorFor(model => model.banner_star, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.banner_star, "", new {@class = "text-danger"})
+                                    </div>
+                                    <div class="form-group">
+                                        <lable>
+                                            <b>Ngày kết thúc: </b>
+                                        </lable>
+                                        @Html.EditorFor(model => model.banner_end, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.banner_end, "", new {@class = "text-danger"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <b>Người tạo quảng cáo: </b>
+                                        </label>
+                                        @Html.EditorFor(model => model.create_by, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.create_by, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Trạng thái</label>
+                                        <select class="form-control" name="Trạng thái">
+                                            <option value="0">Không hoạt động</option>
+                                            <option value="1">Hoạt động</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.status, "", new {@class = "text-danger"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Hình</label>
+                                        <input type="file" name="Img" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+@*<div class="form-horizontal">
+        <h4>Banner</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.banner_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.banner_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.banner_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.banner_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.banner_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.banner_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.banner_star, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.banner_star, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.banner_star, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.banner_end, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.banner_end, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.banner_end, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.create_by, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.create_by, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.create_by, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.create_at, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.create_at, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.create_at, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

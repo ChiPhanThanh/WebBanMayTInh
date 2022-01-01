@@ -1,0 +1,157 @@
+﻿@model DoAn_LapTrinhWeb.Model.Banner
+
+@{
+    ViewBag.Title = "Xoá quảng cáo";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@Html.Partial("_MessageAlert")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9">
+            <h2>Quảng cáo</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a>Bảng điều khiển</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Quảng cáo</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>Xóa</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-3">
+            <br/>
+            <input type="submit" value="Xóa" class="btn btn-primary  btn-sm fas fa-plus-circle"/>
+            <a class="btn btn-success" href="@Url.Action("Index", "Banners")">
+                <i class="fa fa-mail-reply">
+                    <span class="Bold">Quay về</span>
+                </i>
+            </a>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5 style="color:blue;">@Model.banner_name</h5>
+                    </div>
+                    <div class="ibox-content">
+                        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th scope="col"><b>Tên quảng cáo: </b>(model => model.banner_name)</th>
+                                <td scope="col">@Html.DisplayFor(model => model.banner_name)</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"><b>Ngày bắt đầu: </b>(model => model.banner_name)</th>
+                                <td scope="col">@Html.DisplayFor(model => model.banner_star)</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"><b>Ngày kết thúc: </b>(model => model.banner_name)</th>
+                                <td scope="col"> @Html.DisplayFor(model => model.banner_end)</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"><b>Chi tiết quảng cáo: </b>(model => model.banner_name)</th>
+                                <td scope="col"> @Html.DisplayFor(model => model.description)</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"><b>Ngày tạo: </b>(model => model.banner_name)</th>
+                                <td scope="col"> @Html.DisplayFor(model => model.create_at)</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"><b>Người tạo: </b>(model => model.banner_name)</th>
+                                <td scope="col"> @Html.DisplayFor(model => model.create_by)</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*<div>
+    <h4>Banner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.banner_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banner_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.banner_star)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banner_star)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.banner_end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banner_end)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>*@

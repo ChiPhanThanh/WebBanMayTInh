@@ -1,0 +1,96 @@
+﻿@model List<DoAn_LapTrinhWeb.Model.Banner>
+@{
+    ViewBag.Title = "Thùng rác";
+    Layout = "~/Areas/Areas/Views/Shared/LayoutAdmin.cshtml";
+}
+@Html.Partial("_MessageAlert")
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Quảng cáo</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a>Bảng điều khiển</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Quảng cáo</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Thùng rác</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+        <br/>
+        <a class="btn btn-info" href="@Url.Action("Index", "Banners")">
+            <i class="fa fa-mail-reply"></i><span class="Bold">Quay về</span>
+        </a>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>
+                                <b>Tên quảng cáo </b>
+                            </th>
+                            <th>
+                                <b>Ngày bắt đầu </b>
+                            </th>
+                            <th>
+                                <b>Ngày kết thúc </b>
+                            </th>
+                            <th>
+                                <b>Mô tả quảng cáo </b>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                @*<th> ảnh chưa làm</th>*@
+                                <td>
+                                    <img src="@Html.DisplayFor(modelItem => item.image)" width="80px;"/>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Banners", new {id = item.banner_id})">@item.banner_name</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_star)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_end)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.banner_end)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                        <a href="@Url.Action("Undo", "Banners", new {id = item.banner_id})" class="text-white">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("Delete", "Banners", new {id = item.banner_id})" class="text-white">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

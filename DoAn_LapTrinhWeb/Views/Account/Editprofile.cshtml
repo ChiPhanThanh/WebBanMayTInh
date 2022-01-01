@@ -1,0 +1,152 @@
+﻿
+@model DoAn_LapTrinhWeb.Models.Account
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+
+}
+@using DoAn_LapTrinhWeb.Common.Helpers
+@if (User.Identity.IsAuthenticated)
+{
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                    <li class="active">Thông tin tài khoản</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+    <!--Start xem thông tin cá nhân-->
+    <section class="mb-250px">
+        <div class="container">
+            <div class="center-noleftright">
+                <div class="row no-gutters">
+                    <!--start menu left-->
+                    <div class="col-12 col-lg-3 col-xl-3 mt-20px">
+                        <section class="user-info">
+                            <div class="">
+                                <img class="ms-3" alt="Get your avatar" src="~/Images/it_service/userimage.png" />
+                            </div>
+                            <div class="caption">
+                                <div class="title">Tài khoản của</div>
+                                <div class="name">@User.Identity.GetName()</div>
+                            </div>
+                        </section>
+                        <nav class="user-sidebar">
+                            <ul>
+                                <li class="active">
+                                    <a href="@Url.Action("Editprofile","Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">person</i>
+                                        </div>
+                                        <span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="@Url.Action("ChangePassword","Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">lock</i>
+                                        </div>
+                                        <span>Đổi mật khẩu</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="@Url.Action("TrackingOrder","Account")">
+                                        <div class="icon">
+                                            <i class="material-icons">assignment</i>
+                                        </div>
+                                        <span>Quản lý đơn hàng</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--end menu left-->
+                    <!--start list menu thông tin cá nhân-->
+                    <div class="col-12 col-lg-9 col-xl-9 mb-10px">
+                        <div class="user-page">
+                            <div class="page-title text-uppercase">Thông tin tài khoản</div>
+                            <div class="user-form">
+                                <form method="post" class="form-wrap" id="Updatename">
+                                    <!-- start form group -->
+                                    <div class="text-danger">
+                                        @ViewBag.Message1
+                                    </div>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label for="" class="settinglabel control-label col-sm-4 fw-normal">Tên đăng nhập</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@User.Identity.GetUsername()" disabled="disabled" tabindex="1" class="form-control" />   @*Nếu không muốn cho người dùng nhập liệu thì thêm (disabled="disabled") vào input*@
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group  mb-3">
+                                            <label class="settinglabel control-label fw-normal col-sm-4">Email</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@User.Identity.GetEmail()" disabled="disabled" tabindex="2" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label class="settinglabel control-label col-sm-4 fw-normal">Họ tên</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@Model.Name" name="Name" id="Name" tabindex="3" class="form-control" required autofocus />
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label class="settinglabel control-label col-sm-4 fw-normal">Điện thoại</label>
+                                            <div class="col-sm-8">
+                                                <input type="tel" value="@Model.Phone.TrimEnd()" name="Phone" id="Phone" tabindex="4" class="form-control" required autofocus />
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label class="settinglabel control-label col-sm-4 fw-normal">Địa chỉ 1</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@Model.Addres_1" name="Addres_1" id="Addres_1" tabindex="4" class="form-control" autofocus />
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label class="settinglabel control-label col-sm-4 fw-normal">Địa chỉ 2</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@Model.Addres_2" name="Addres_2" id="Addres_2" tabindex="4" class="form-control" autofocus />
+                                            </div>
+                                        </div>
+                                        <div class="settingrow form-group mb-3">
+                                            <label class="settinglabel control-label col-sm-4 fw-normal">Địa chỉ 3</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" value="@Model.Addres_3" name="Addres_3" id="Addres_3" tabindex="4" class="form-control" autofocus />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end form group -->
+                                    <div class="form-group clearfix ml-5">
+                                        <div class="col-sm-9 col-sm-offset-3 frm-btn">
+                                            <input type="submit" value="Cập nhật" onclick="SaveForm1(event)" tabindex="5" class="text-uppercase btn bt_main rounded-100px" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end list menu thông tin cá nhân-->
+                </div>
+            </div>
+        </div>
+        <script>
+           
+        </script>
+    </section>
+    <!--end xem thông tin cá nhân-->
+
+}

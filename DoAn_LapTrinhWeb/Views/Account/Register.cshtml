@@ -1,0 +1,108 @@
+﻿@model DoAn_LapTrinhWeb.Models.Account
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/Main_Layout.cshtml";
+}
+@using (Html.BeginForm("Register", "Account",
+    null,
+    FormMethod.Post))
+{
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                                    <li class="active">Đăng ký tài khoản</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
+
+    @Html.AntiForgeryToken()
+    <!--start đăng ký -->
+    <section class="mt-20px mb-50px">
+
+        <div class="container ">
+            <div class="row justify-content-sm-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9 ">
+                    <div class="rounded-2 pt-3 shadow-lg ">
+                        <div class="card-body ps-3 pe-3">
+                            <p class=" card-title h4 center text-uppercase uper fw-bold mb-2">Đăng ký</p>
+                            <div class="text-success" >
+                                @ViewBag.Success
+                            </div>
+                            <div class="text-danger">
+                                @ViewBag.Fail
+                            </div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <form id="Registration" >
+                                @* name*@
+                                <div class="form-group">
+                                    <label class="mb-1 text-muted " for="name">Họ tên</label>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "Name" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                                </div>
+                                @*ten dang nhap*@
+
+                                <div class="form-group">
+                                    <label class="mb-1 text-muted " for="username">Tên đăng nhập</label>
+                                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @id = "Username" } })
+                                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                </div>
+                                @*email*@
+
+                                <div class="form-group">
+                                    <label class="mb-1 text-muted " for="email">Email</label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                @*mat khau*@
+                                <div class="form-group">
+                                    <label class="mb-1 text-muted " for="password">Mật khẩu</label>
+                                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @id = "Password", 
+                                        @pattern = "(?=.*[a-z])(?=.*[A-Z]).{6,}", @title = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" } })
+                                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                </div>
+                                @*điện thoại *@
+                                <div class="form-group">
+                                    <label class="mb-1 text-muted " for="Phone">Điện thoại</label>
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @id = "Phone",@Type="number" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                @*địa chỉ*@
+                                <div class="form-group mb-3">
+                                    <label class="mb-1 text-muted " for="Addres_1">Địa chỉ</label>
+                                    @Html.EditorFor(model => model.Addres_1, new { htmlAttributes = new { @class = "form-control", @id = "Addres_1" } })
+                                    @Html.ValidationMessageFor(model => model.Addres_1, "", new { @class = "text-danger" })
+                                </div>
+                            </form>
+                            <div class="form-group mb-4 pb-4">
+                                <button class="text-uppercase btn bt_main w-100"  tabindex="7" type="submit">Đăng ký</button>
+                            </div>
+                        </div>
+                        <div class="card-footer py-3 border-0">
+                            <div class="text-center">
+                                @*nếu đã có tài khoản thì chuyển qua trang đăng nhập*@
+                                Bạn đã có tài khoản? <a href="#" onclick="PopupModalSignIn()" data-toggle="modal" data-target="#ShowModalSignIn" data-dismiss="modal" class="fw-bold">Đăng nhập</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!--end đăng ký-->
+}
