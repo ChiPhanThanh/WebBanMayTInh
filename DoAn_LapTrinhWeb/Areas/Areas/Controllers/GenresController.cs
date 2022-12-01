@@ -77,7 +77,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
         {
            try
            {
-               var strSlug = genre.genre_name.ToAscii();
+               var strSlug = genre.genre_name.ToAscii ();
                genre.slug = strSlug;
 
                genre.status = "1";

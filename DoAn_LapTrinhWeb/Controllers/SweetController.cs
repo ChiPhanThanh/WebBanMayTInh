@@ -7,7 +7,7 @@ namespace SweetAlert.Controllers
         // GET: Sweet
         public ActionResult Alert()
         {
-            return View();
+            return  View();
         }
     }
 }

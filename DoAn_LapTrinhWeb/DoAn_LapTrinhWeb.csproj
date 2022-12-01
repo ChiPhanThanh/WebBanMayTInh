@@ -168,9 +168,7 @@
     <Compile Include="Common\ProductType.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="DbContext.cs" />
@@ -729,7 +727,6 @@
     <Content Include="Content\my_css\responsive.css" />
     <Content Include="Content\my_css\vanillatop.min.css" />
     <Content Include="EmailTemplate\Text.cshtml" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\admin\css\animate.css" />
     <Content Include="fonts\admin\css\bootstrap.css" />
     <Content Include="fonts\admin\css\bootstrap.min.css" />
@@ -1561,7 +1558,6 @@
     <Content Include="Images\it_service\i3.png" />
     <Content Include="Images\it_service\i4.png" />
     <Content Include="Images\it_service\inner_page_banner.jpg" />
-    <Content Include="Images\it_service\it_logofinal1.png" />
     <Content Include="Images\it_service\lenovo_brand.png" />
     <Content Include="Images\it_service\location_icon_map_cont.png" />
     <Content Include="Images\it_service\loupe.png" />
@@ -3447,9 +3443,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Discount\Listbanner.cshtml" />
     <Content Include="Views\Products\ProductDetail.cshtml" />
-    <Content Include="Views\Home\SentRequest.cshtml" />
     <Content Include="Views\Products\Product.cshtml" />
     <Content Include="Views\Shared\Pager.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
@@ -3459,7 +3453,6 @@
     <Content Include="Views\Shared\Header_Layout.cshtml" />
     <Content Include="Views\Shared\Footer_Layout.cshtml" />
     <Content Include="Views\Shared\Laptop_Module.cshtml" />
-    <Content Include="Views\Shared\Search_Module.cshtml" />
     <Content Include="Views\Shared\Cart_Module.cshtml" />
     <Content Include="Views\Shared\Account_Module.cshtml" />
     <Content Include="Views\Shared\Accessory_Module.cshtml" />
@@ -3475,7 +3468,6 @@
     <Content Include="Views\Products\Brandlistpartial.cshtml" />
     <Content Include="Views\Products\Listbrandproductlaptop.cshtml" />
     <Content Include="Views\Shared\OrderMesg.cshtml" />
-    <Content Include="Views\Discount\Bannerdetail.cshtml" />
     <Content Include="Views\News\NewsDetail.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />

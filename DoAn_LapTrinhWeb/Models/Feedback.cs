@@ -14,7 +14,7 @@ namespace DoAn_LapTrinhWeb.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Feedback()
         {
-            Feedback_Image = new HashSet<Feedback_Image>();
+            Feedback_Image = new  HashSet<Feedback_Image>();
         }
 
         [Key]

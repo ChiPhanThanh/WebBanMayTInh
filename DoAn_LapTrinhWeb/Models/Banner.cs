@@ -19,6 +19,7 @@ namespace DoAn_LapTrinhWeb.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int banner_id { get; set; }
 
+
         [Required] [StringLength(100)] public string banner_name { get; set; }
 
         public DateTime? banner_star { get; set; }

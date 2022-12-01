@@ -6,7 +6,7 @@ namespace DoAn_LapTrinhWeb.DTOs
 {
     public class ProductDTOs
     {
-        public string product_name { get; set; }
+        public string product_name  { get; set; }
         public string genre_name { get; set; }
         public string brand_name { get; set; }
 

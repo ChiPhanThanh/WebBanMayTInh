@@ -10,7 +10,7 @@ namespace DoAn_LapTrinhWeb.Common
 	/// </summary>
 	public class LoggedUserData
 	{
-		public int UserId { get; set; }
+		public int UserId  { get; set; }
 		public string Username { get; set; }
 		public string Name { get; set; }
 		public string Email { get; set; }

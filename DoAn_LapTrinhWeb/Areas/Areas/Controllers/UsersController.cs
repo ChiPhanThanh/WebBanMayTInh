@@ -25,7 +25,6 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
 
         public ActionResult Trash()
         {
-
             var user = from a in db.Accounts
                 where a.status == "0" && a.Role == "1"
                 orderby a.create_at descending // giảm dần

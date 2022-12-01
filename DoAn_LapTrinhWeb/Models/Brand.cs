@@ -12,7 +12,7 @@ namespace DoAn_LapTrinhWeb.Models
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Brand()
         {
-            Products = new HashSet<Product>();
+            Products =  new HashSet<Product>();
         }
 
         [Key] public int brand_id { get; set; }

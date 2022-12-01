@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace DoAn_LapTrinhWeb.Common
 {
-	public class CustomRoleProvider : RoleProvider
+	public class CustomRoleProvider :  RoleProvider
 	{
 		public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

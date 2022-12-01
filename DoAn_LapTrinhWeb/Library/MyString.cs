@@ -7,6 +7,7 @@ namespace DoAn_LapTrinhWeb
 {
     public static class MyString
     {
+
         public static string ToBase64(this string s)
         {
             if (s != null)

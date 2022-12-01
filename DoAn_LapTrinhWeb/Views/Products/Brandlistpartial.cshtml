@@ -1,10 +1,8 @@
 ﻿@using DoAn_LapTrinhWeb.Models
 @model IEnumerable<DoAn_LapTrinhWeb.Models.Brand>
                @foreach (var lbrand in Model)
-            {
-               
+            { 
                 <li>@Html.ActionLink(lbrand.brand_name,  "Listbrandproductlaptop", "Products", new { id = lbrand.brand_id }, null)</li>
-               
                }
        
 

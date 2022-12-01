@@ -6,6 +6,7 @@ namespace DoAn_LapTrinhWeb.Migrations
     {
         public Configuration()
         {
+
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
         }

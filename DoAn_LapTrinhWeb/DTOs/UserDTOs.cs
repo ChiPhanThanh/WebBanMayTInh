@@ -4,7 +4,7 @@ namespace DoAn_LapTrinhWeb.DTOs
 {
     public class UserDTOs
     {
-        public int account_id { get; set; }
+        public int account_id  { get; set; }
         public string username { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }

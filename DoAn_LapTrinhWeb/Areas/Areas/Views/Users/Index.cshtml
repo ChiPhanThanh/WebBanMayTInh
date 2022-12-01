@@ -14,7 +14,7 @@
                                                    <u>Bảng điều khiển</u>
                                                </a>
             </li>
-            <li class="breadcrumb-item">
+            <li class="breadcrumb-item ">
                 <strong>Người dùng</strong>
             </li>
 
@@ -69,20 +69,20 @@
                                 </td>
                                 <td>
                                      <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
-                                                                            <a href="@Url.Action("Edit", "Brands", new {id = item.account_id})" class="text-white">
-                                                                                <i class="fa fa-edit"></i>
-                                                                            </a>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xóa">
-                                                                            <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
-                                                                                <i class="fa fa-arrows-h"></i>
-                                                                            </a>
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Xóa">
-                                                                            <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
-                                                                                <i class="fa fa-trash"></i>
-                                                                            </a>
-                                                                        </button>
+                                        <a href="@Url.Action("Edit", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-arrows-h"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                        <a href="@Url.Action("DelTrash", "Brands", new {id = item.account_id})" class="text-white">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </button>
                                 </td>
                             </tr>
                            }

@@ -47,35 +47,7 @@ namespace DoAn_LapTrinhWeb.Controllers
         {
             return View();
         }
-        public ActionResult SentRequest()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SentRequest(Contact contact)
-        {
-            try
-            {
-                contact.name = contact.name;
-                contact.email = contact.email;
-                contact.create_by = "1";
-                contact.update_at = DateTime.Now;
-                contact.status = "1";
-                contact.create_at = DateTime.Now;
-                contact.update_by = "1";
-                contact.content = contact.content;
-                contact.phone = contact.phone;
-                _dbContext.Contacts.Add(contact);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+      
         public PartialViewResult Laptop_Module()
         {
                //lay ds loai san pham

@@ -17,7 +17,7 @@ namespace DoAn_LapTrinhWeb.Models
         {
             Banner_Detail = new HashSet<Banner_Detail>();
             Feedbacks = new HashSet<Feedback>();
-            Oder_Detail = new HashSet<Oder_Detail>();
+            Oder_Detail =  new HashSet<Oder_Detail>();
         }
 
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]

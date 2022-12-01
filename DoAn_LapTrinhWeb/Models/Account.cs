@@ -10,7 +10,7 @@ namespace DoAn_LapTrinhWeb.Models
     [Table("Account")]
     public class Account
     {
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage ("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
             Feedbacks = new HashSet<Feedback>();

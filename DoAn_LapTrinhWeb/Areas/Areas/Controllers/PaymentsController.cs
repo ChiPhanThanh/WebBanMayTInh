@@ -8,7 +8,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
 {
     public class PaymentsController : BaseController
     {
-        private readonly DbContext db = new DbContext();
+        private readonly DbContext db = new DbContext ();
 
         // GET: Areas/Payments
         public ActionResult Index()

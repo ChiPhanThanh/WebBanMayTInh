@@ -13,7 +13,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
         // GET: Areas/Deliveries
         public ActionResult Index()
         {
-            ViewBag.countTrash = db.Deliveries.Where(a => a.status == "0").Count(); //  đếm tổng sp có trong thùng rác
+            ViewBag.countTrash =  db.Deliveries.Where(a => a.status == "0").Count(); //  đếm tổng sp có trong thùng rác
             return View(db.Deliveries.Where(m => m.status == "1").OrderByDescending(m => m.create_at).ToList());
         }
 

@@ -11,7 +11,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
 
         // GET: Areas/Dashboard
         
-        public ActionResult Index()
+        public ActionResult Index ()
         {
             // ViewBag.CountOrder = db.Oder_Detail.Where(m => m.status == "1").Count();
             ViewBag.CountOrderWaitting = (from a in db.Oder_Detail

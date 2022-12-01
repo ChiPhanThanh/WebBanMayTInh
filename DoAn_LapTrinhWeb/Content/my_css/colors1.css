@@ -24,14 +24,14 @@ a.btn.dark_gray_bt:focus,
 .tags a:focus,
 .testimonial_slider .carousel-control:hover,
 .testimonial_slider .carousel-control:focus,
-.pagination>.active>a,
-.pagination>.active>a:focus,
-.pagination>.active>a:hover,
-.pagination>.active>span,
-.pagination>.active>span:focus,
-.pagination>.active>span:hover,
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover,
 .icon_feature {
-	background: #039ee3;
+    background: #e91e63;
     background-size: 100% 100%;
     border: none;
 }

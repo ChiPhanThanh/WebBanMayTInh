@@ -69,7 +69,7 @@ namespace DoAn_LapTrinhWeb.Controllers
             Cart item = lst.Find(n => n.iMasp == id);
             int soluong = int.Parse(frm["txtSoluong"].ToString());
             item.iSoLuong = soluong;//cap nhat so luong moi
-            return RedirectToAction("ViewCart");
+            return RedirectToAction ("ViewCart");
         }
 
         [Authorize] // => Phải đăng nhập mới được phép vào action bên dưới

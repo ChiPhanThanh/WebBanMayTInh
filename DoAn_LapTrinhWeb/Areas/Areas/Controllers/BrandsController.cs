@@ -23,7 +23,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
                 where a.status != "0"
                 orderby a.create_at descending
                 select a;
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty (searchString))
             {
                 list = from a in _db.Brands
                     where a.status != "0" && a.brand_name.Contains(searchString)

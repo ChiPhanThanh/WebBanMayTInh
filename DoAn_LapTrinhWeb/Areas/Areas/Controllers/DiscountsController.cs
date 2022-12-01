@@ -54,7 +54,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
         }
 
         // GET: Areas/Discounts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details (int? id)
         {
             var discount = _db.Discounts.SingleOrDefault(a => a.disscount_id == id);
             if (discount == null || id == null)

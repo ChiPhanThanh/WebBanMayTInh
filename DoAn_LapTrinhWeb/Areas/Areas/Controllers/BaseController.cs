@@ -14,7 +14,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
         {
 
 
-            if (!System.Web.HttpContext.Current.User.IsInRole("Admin"))
+            if (!System.Web.HttpContext.Current.User.IsInRole ("Admin"))
             {
                 System.Web.HttpContext.Current.Response.Redirect("~/Home/Index");
             }

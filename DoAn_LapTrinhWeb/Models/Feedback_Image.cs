@@ -10,7 +10,7 @@ namespace DoAn_LapTrinhWeb.Model
 
         public int feedback_id { get; set; }
 
-        public int account_id { get; set; }
+        public int account_id  { get; set; }
 
         [Column(TypeName = "text")] public string image { get; set; }
 

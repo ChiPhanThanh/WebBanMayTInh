@@ -16,7 +16,7 @@ namespace DoAn_LapTrinhWeb.Model
             Oder_Detail = new HashSet<Oder_Detail>();
         }
 
-        [Key] public int order_id { get; set; }
+        [Key] public int order_id  { get; set; }
 
         public int payment_id { get; set; }
 

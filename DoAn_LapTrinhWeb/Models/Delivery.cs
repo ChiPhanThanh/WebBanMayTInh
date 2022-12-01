@@ -17,7 +17,7 @@ namespace DoAn_LapTrinhWeb.Model
 
         [Key] public int delivery_id { get; set; }
 
-        [Required] [StringLength(100)] public string delivery_name { get; set; }
+        [Required] [StringLength(100)]  public string delivery_name { get; set; }
 
         [Column(TypeName = "money")] public decimal price { get; set; }
 

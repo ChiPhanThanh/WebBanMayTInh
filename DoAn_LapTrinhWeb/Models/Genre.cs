@@ -16,7 +16,7 @@ namespace DoAn_LapTrinhWeb.Model
             Products = new HashSet<Product>();
         }
 
-        [Key] public int genre_id { get; set; }
+        [Key] public int genre_id  { get; set; }
 
         [Required] [StringLength(50)] public string genre_name { get; set; }
 

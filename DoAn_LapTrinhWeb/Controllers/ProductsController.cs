@@ -46,7 +46,6 @@ namespace DoAn_LapTrinhWeb.Controllers
         {
             ViewBag.Type = "Laptop";
             return View("Product", GetProduct(m => m.status == "1" && m.type == ProductType.LAPTOP, page));
-           
         }
         //xem chi tiết từng sản phẩm
         //[Route("sanpham1/{slug}-{id:int}")]

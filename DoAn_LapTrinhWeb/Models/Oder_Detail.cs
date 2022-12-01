@@ -12,7 +12,7 @@ namespace DoAn_LapTrinhWeb.Model
     public partial class Oder_Detail
     {
         [Key]
-        [Column(Order = 0)]
+        [Column(Order = 0) ]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int product_id { get; set; }
 

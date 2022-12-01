@@ -3,20 +3,19 @@
 <html>
 @Html.Partial("_MessageAlert")
 <head>
-
-    <meta charshet="utf-8"/>
+    <meta charshet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="~/Images/fevicon/favicon.png" type="image/png" />
+    <link rel="icon" href="~/Images/it_service/it_logofinal1.jpg" type="image/png" />
     <title>Quản trị hệ thống: @ViewBag.Title</title>
-    <link href="~/Public/admin/css/style.css" rel="stylesheet"/>
-    <link href="~/Public/admins/style.css" rel="stylesheet"/>
+    <link href="~/Public/admin/css/style.css" rel="stylesheet" />
+    <link href="~/Public/admins/style.css" rel="stylesheet" />
     <link href="~/Public/admins/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Public/admin/status/css/sweetalert2.min.css" rel="stylesheet"/>
-    <link href="~/Public/admin/status/css/toastr.min.css" rel="stylesheet"/>
+    <link href="~/Public/admin/status/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Public/admin/status/css/toastr.min.css" rel="stylesheet" />
 
     <link href="~/Public/admins/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="~/Public/admins/css/animate.css" rel="stylesheet"/>
-    <link href="~/Public/admins/style.css" rel="stylesheet"/>
+    <link href="~/Public/admins/css/animate.css" rel="stylesheet" />
+    <link href="~/Public/admins/style.css" rel="stylesheet" />
     <!-- FooTable -->
     <link href="~/Public/admins/css/plugins/footable/footable.core.css" rel="stylesheet">
     <script type="text/javascript" src="~/Public/admin/status/ckeditor/ckeditor.js"></script>
@@ -62,9 +61,9 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("Index", "ProductsAdmin")">Sản phẩm</a>
-                            <a href="@Url.Action("Index", "Genres")" class="">Thể loại</a>
-                            <a href="@Url.Action("Index", "Brands")" class="">Thương hiệu</a>
-                            <a href="@Url.Action("Index", "Discounts")" class="">Chương trình giảm giá</a>
+                            <a href=" @Url.Action("Index", "Genres")" class="">Thể loại</a>
+                            <a href="@Url.Action("Index", "Brands")" class="">Thương hiệu</a> 
+                            <a href="@Url.Action("Index", "Discounts")" class="">Chương trình giảm giá</a> 
                         </li>
                     </ul>
                 </li>
@@ -74,7 +73,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="@Url.Action("Index", "Banners")">Danh sách</a>
+                            <a href="#">Danh sách</a>  @*@Url.Action("Index", "Banners")*@
                         </li>
                     </ul>
                 </li>
@@ -85,9 +84,9 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="@Url.Action("Index", "Orders")">Danh sách</a>
-                            <a href="@Url.Action("Index", "Payments")">Thanh toán</a>
-                            <a href="@Url.Action("Index", "Deliveries")">Vận chuyển</a>
+                            <a href=" @Url.Action("Index", "Orders")">Danh sách</a>     
+                            <a href="@Url.Action("Index", "Payments")">Thanh toán</a>    
+                            <a href="@Url.Action("Index", "Deliveries")">Vận chuyển</a>   
                         </li>
 
                     </ul>
@@ -110,7 +109,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="@Url.Action("Index", "Contacts")">Danh sách</a>
+                            <a href=" @Url.Action("Index", "Contacts")">Danh sách</a> 
                         </li>
 
 
@@ -154,8 +153,6 @@
                                 <a href="@Url.Action("ViewProfile", "Base")" class="dropdown-item">
                                     <div>
                                         <i class="fa fa-user"></i> Tài khoản của tôi
-
-
                                     </div>
                                 </a>
                             </li>
@@ -163,8 +160,6 @@
                                 <a href="@Url.Action("BackToHome", "Base")" class="dropdown-item">
                                     <div>
                                         <i class="fa fa-home"></i> Về trang chủ
-
-
                                     </div>
                                 </a>
                             </li>
@@ -187,7 +182,7 @@
 
         <div class="footer">
             <div>
-                NVT © Copyrights 2021 Công Ty TNHH NVT Computer
+                FPT - Bán Máy Tính FPT-Đại Học Vinh
             </div>
         </div>
     </div>

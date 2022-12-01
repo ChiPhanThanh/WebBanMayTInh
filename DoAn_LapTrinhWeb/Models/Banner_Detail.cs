@@ -14,7 +14,7 @@ namespace DoAn_LapTrinhWeb.Model
 
         [Key]
         [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated (DatabaseGeneratedOption.None)]
         public int product_id { get; set; }
 
         [Key]

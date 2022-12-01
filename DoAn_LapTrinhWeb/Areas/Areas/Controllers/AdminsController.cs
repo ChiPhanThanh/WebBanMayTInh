@@ -186,7 +186,6 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
             }
 
             return View(user.SingleOrDefault());
-
         }
 
         // POST: Areas/Admins/Delete/5

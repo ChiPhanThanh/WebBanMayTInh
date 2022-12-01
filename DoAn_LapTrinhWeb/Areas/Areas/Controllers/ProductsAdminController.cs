@@ -50,7 +50,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
             return View(list.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Trash(string searchString, string show, int? size, int? page) // hiển thị tất cả sp online
+        public ActionResult Trash(string searchString, string show, int? size, int? page ) // hiển thị tất cả sp online
         {
             var pageSize = size ?? 5;
             var pageNumber = page ?? 1;

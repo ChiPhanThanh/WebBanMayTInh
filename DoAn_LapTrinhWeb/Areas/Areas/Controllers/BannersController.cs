@@ -8,7 +8,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
 {
     public class BannersController : BaseController
     {
-        private readonly DbContext db = new DbContext();
+        private readonly DbContext db = new DbContext ();
 
         // GET: Areas/Banners
         public ActionResult Index()

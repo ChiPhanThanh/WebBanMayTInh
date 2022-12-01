@@ -9,7 +9,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <!-- inner page banner -->
-    <div id="inner_banner" class="section inner_banner_section">
+    <div id ="inner_banner" class="section inner_banner_section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -37,7 +37,7 @@
                     <div class="col-12 col-lg-3 col-xl-3 mt-20px">
                         <section class="user-info">
                             <div class="">
-                                <img class="ms-3" alt="Get your avatar" src="~/Images/it_service/userimage.png" />
+                                <img class="ms-3" alt="Get your avatar" src="~/Images/it_service/it_logofinal1.jpg" width="40" />
                             </div>
                             <div class="caption">
                                 <div class="title">Tài khoản của</div>
@@ -116,23 +116,23 @@
                                                 <input type="text" value="@Model.Addres_1" name="Addres_1" id="Addres_1" tabindex="4" class="form-control" autofocus />
                                             </div>
                                         </div>
-                                        <div class="settingrow form-group mb-3">
+                                        @*<div class="settingrow form-group mb-3">
                                             <label class="settinglabel control-label col-sm-4 fw-normal">Địa chỉ 2</label>
                                             <div class="col-sm-8">
                                                 <input type="text" value="@Model.Addres_2" name="Addres_2" id="Addres_2" tabindex="4" class="form-control" autofocus />
                                             </div>
-                                        </div>
-                                        <div class="settingrow form-group mb-3">
+                                        </div>*@
+                                        @*<div class="settingrow form-group mb-3">
                                             <label class="settinglabel control-label col-sm-4 fw-normal">Địa chỉ 3</label>
                                             <div class="col-sm-8">
                                                 <input type="text" value="@Model.Addres_3" name="Addres_3" id="Addres_3" tabindex="4" class="form-control" autofocus />
                                             </div>
-                                        </div>
+                                        </div>*@
                                     </div>
                                     <!-- end form group -->
                                     <div class="form-group clearfix ml-5">
                                         <div class="col-sm-9 col-sm-offset-3 frm-btn">
-                                            <input type="submit" value="Cập nhật" onclick="SaveForm1(event)" tabindex="5" class="text-uppercase btn bt_main rounded-100px" />
+                                            <input type="submit" value="Cập nhật" onclick="SaveForm1(event)" tabindex="5" class="text-uppercase btn bt_main rounded-100px" style="background-color:#e91e63"/>
                                         </div>
                                     </div>
                                 </form>

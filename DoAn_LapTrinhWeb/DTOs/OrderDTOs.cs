@@ -4,7 +4,7 @@ namespace DoAn_LapTrinhWeb.DTOs
 {
     public class OrderDTOs
     {
-        public int order_id { get; set; }
+        public int order_id  { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }

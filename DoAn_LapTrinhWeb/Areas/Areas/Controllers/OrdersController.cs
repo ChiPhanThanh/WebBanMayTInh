@@ -88,6 +88,7 @@ namespace DoAn_LapTrinhWeb.Areas.Areas.Controllers
             return View(order);
         }
 
+
         public ActionResult DelTrash(int? id)
         {
             var order = db.Orders.SingleOrDefault(pro => pro.order_id == id);

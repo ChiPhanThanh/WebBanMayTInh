@@ -13,7 +13,7 @@ namespace DoAn_LapTrinhWeb.Model
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Discount()
         {
-            Products = new HashSet<Product>();
+            Products = new  HashSet<Product>();
         }
 
         [Key] public int disscount_id { get; set; }

@@ -12,7 +12,7 @@ namespace DoAn_LapTrinhWeb.Model
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Payment()
         {
-            Orders = new HashSet<Order>();
+            Orders = new HashSet<Order>() ;
         }
 
         [Key] public int payment_id { get; set; }

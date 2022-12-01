@@ -5,7 +5,7 @@
         <ul class="rounded-2">
             @foreach (var lsp in Model)
             {
-            <li> <i class="fa fa-angle-right"></i> @Html.ActionLink(@lsp.genre_name, "Listgenreproductlaptop", "Products", new { id = @lsp.genre_id }, null)</li>  
+            <li> <i class = "fa fa-angle-right"></i> @Html.ActionLink(@lsp.genre_name, "Listgenreproductlaptop", "Products", new { id = @lsp.genre_id }, null)</li>  
             }
             </ul>
     </div>

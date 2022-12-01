@@ -2,7 +2,7 @@
 {
     public class Brand
     {
-        public const int Apple = 1;
+        public const int Apple =  1;
         public const int MSI = 13;
         public const int Acer = 6;
         public const int ASUS = 7;

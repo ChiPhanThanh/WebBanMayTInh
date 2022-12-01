@@ -8,7 +8,7 @@ namespace DoAn_LapTrinhWeb.Model
         private readonly DbContext db = new DbContext();
 
         // tao thuoc tinh cho moi item trong gio hang
-        public Cart(int product_id)
+        public Cart (int product_id)
         {
             iMasp = product_id;
             var sp = db.Products.Find(product_id);

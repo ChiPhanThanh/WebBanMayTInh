@@ -10,7 +10,7 @@ namespace DoAn_LapTrinhWeb
         public DbContext()
             : base("Model11")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbContext, Configuration>());
+            Database.SetInitializer (new MigrateDatabaseToLatestVersion<DbContext, Configuration>());
         }
 
 

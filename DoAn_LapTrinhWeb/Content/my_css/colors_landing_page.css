@@ -43,18 +43,18 @@ a.btn.dark_gray_bt:focus,
 #navbar_menu > ul > li a.active,
 #navbar_menu > ul > li:hover > a,
 #navbar_menu > ul > li:focus > a,
-footer p a:hover,footer p a:focus,
+footer p a:hover, footer p a:focus,
 .footer-menu li a:hover,
 .footer-menu li a:focus,
 footer ul.social_icons li a:hover,
 footer ul.social_icons li a:focus,
 .breadcrumb li a {
-    color: #039ee3;
+    color: #e91e63;
 }
 
 .btn.sqaure_bt {
     border-radius: 0;
-    background: #039ee3;
+    background: #e91e63;
 }
 
 .btn.sqaure_bt span {
@@ -66,12 +66,12 @@ footer ul.social_icons li a:focus,
 
 footer h2::after,
 .footer_mail-section .field button.button_custom,
-.cprt,.contact_us_section {
-	background: #039ee3;
+.cprt, .contact_us_section {
+    background: #e91e63;
 }
 
 .tp-caption.tp-shape.tp-shapewrapper.tp-resizeme.rs-parallaxlevel-0 {
-    background: #039ee3 !important;
+    background: #e91e63 !important;
 }
 
 a.btn.main_bt,
@@ -117,15 +117,15 @@ hr.dottad_border,
 .social_icon_style_2 ul li a:focus,
 .tags a:hover,
 .tags a:focus,
-.pagination>.active>a,
-.pagination>.active>a:focus,
-.pagination>.active>a:hover,
-.pagination>.active>span,
-.pagination>.active>span:focus,
-.pagination>.active>span:hover,
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover,
 .comment_section,
 .boder_dottat_small {
-	border-color: #039ee3;
+    border-color: #e91e63;
 }
 
 

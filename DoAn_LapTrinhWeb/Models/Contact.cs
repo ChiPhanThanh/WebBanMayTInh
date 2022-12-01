@@ -11,7 +11,7 @@ namespace DoAn_LapTrinhWeb.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int contact_id { get; set; }
 
-        [Required] public string name { get; set; }
+        [Required] public string  name { get; set; }
 
         [Required] public string phone { get; set; }
 
